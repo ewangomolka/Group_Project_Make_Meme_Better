@@ -15,10 +15,13 @@ MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
     const usersCollection = db.collection('users');
     const usersRouter = createRouter(usersCollection);  
     app.use('/api/users', usersRouter);
+    const memesCollection = db.collection('memes');
+    const memesRouter = createRouter(memesCollection);  
+    app.use('/api/memes', memesRouter);
 
   })
   .catch(console.error);
 
-app.listen(5000, function() {
-  console.log(`Movie Users server running on port ${this.address().port}`);
+app.listen(9000, function() {
+console.log(`Movie Users server running on port ${this.address().port}`);
 });
