@@ -4,9 +4,14 @@ const Login = ({ onSubmitLogin}) => {
 
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
 
-    const handleUsernameChange = (event) => {
-        setUsername(event.target.value)
+
+    // const handleUsernameChange = (event) => {
+    //     setUsername(event.target.value)
+    // }
+    const handleUsernameorEmailChange = (event) => {
+        setUsernameOrEmail(event.target.value)
     }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
@@ -35,7 +40,7 @@ const Login = ({ onSubmitLogin}) => {
                 <>
                 <h2>Sign in </h2>
                 <form onSubmit={handleSubmit}>
-                    <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={usernameOrEmail} onChange={handleUsernameChange} required/>
+                    <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={usernameOrEmail} onChange={handleUsernameorEmailChange} required/>
                     <input type="text" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required/>
                     <input type="submit" value="Log in" />
                 </form>
