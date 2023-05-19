@@ -16,9 +16,6 @@ db.users.insertMany([
     },
 ]);
 
-use memeLibrary;
-db.dropDatabase();
-
 db.memes.insertMany([
     {name: "add css",
     catagory: "css",
