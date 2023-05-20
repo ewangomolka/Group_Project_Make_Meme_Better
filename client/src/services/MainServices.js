@@ -11,7 +11,7 @@ export const postMeme = (payload) => {
         body: JSON.stringify(payload),
         headers: { 'Content-Type': 'application/json'}
     })
-    .then(res => res,json())
+    .then(res => res.json())
 }
 
 export const deleteMeme = (id) => {
@@ -27,4 +27,4 @@ export const updateMeme = (id, payload) => {
         headers: {'Content-Type': 'application/json'}
     })
     .then(res => res.json())
-};
+}
