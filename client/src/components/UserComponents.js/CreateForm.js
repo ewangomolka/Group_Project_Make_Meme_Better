@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState}from 'react';
 import { postNewUser } from '../../services/UserServices';
 
 const CreateForm = (postNewUser) => {
