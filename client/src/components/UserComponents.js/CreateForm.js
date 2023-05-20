@@ -13,8 +13,8 @@ const CreateForm = (props, {postNewUser}) => {
     const handleNameChange = (event) => {
         setName(event.target.value)
     }
-    const handleUsernameOrEmailChange = (event) => {
-        setUsernameOrEmail(event.target.value)
+    const handleUsernameChange = (event) => {
+        setUsername(event.target.value)
     }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
@@ -48,9 +48,9 @@ const CreateForm = (props, {postNewUser}) => {
             <h1>Create Form</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" id="name" placeholder="  NAME  " value={name} onChange={handleNameChange} required />
-                <input type="text" id="user" placeholder="  USERNAME  " value={username} onChange={handleUsernameOrEmailChange} required />
+                <input type="text" id="user" placeholder="  USERNAME  " value={username} onChange={handleUsernameChange} required />
                 <input type="text" id="email" placeholder="  EMAIL  " value={email} onChange={handleEmailChange} required />
-                <input type="text" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
+                <input type="password" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
                 <input type="submit" value="Create Account" />
                 <button onClick={props.onClose}>welcome my guy will close the form</button>
             </form>
