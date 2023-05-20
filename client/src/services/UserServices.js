@@ -29,3 +29,12 @@ export const updateUser = (id, payload) => {
     })
     .then(res => res.json())
 };
+
+export const createPostForUser = (id, post) => {
+    return fetch(baseURL + id + '/post', {
+        method: 'POST',
+        body: JSON.stringify(post),
+        headers: { 'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+}

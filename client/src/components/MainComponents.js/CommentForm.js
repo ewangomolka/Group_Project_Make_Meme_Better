@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 
 const CommentForm = () => {
 
+    // need a state variable to hold all categories
+    // need a state variable to hold the selected category
+    // need a state variable to hold the random meme
     const [categories, setCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [randomMeme, setRandomMeme] = useState('');
 
+    // need a function to fetch all categories
     useEffect(() => {
         fetch('http://localhost:9000/api/memes/categories')
             .then(response => response.json())
@@ -29,7 +33,6 @@ const CommentForm = () => {
             .catch(error => console.log(error))
     }
     
-
     // need a function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
