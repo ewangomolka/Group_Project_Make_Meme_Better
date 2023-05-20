@@ -32,7 +32,7 @@ const CommentForm = () => {
             })
             .catch(error => console.log(error))
     }
-    
+
     // need a function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();

@@ -24,19 +24,19 @@ const CreatePost = (user) => {
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log('form submitted');
-    
+
         const userId = '6468b9b34615204115925465'
 
-    createPostForUser(id, post)
-        .then((data) => {
-            console.log('post saved', data);
-            setPost({
-                content: "",
+        createPostForUser(id, post)
+            .then((data) => {
+                console.log('post saved', data);
+                setPost({
+                    content: "",
+                })
             })
-        })
-        .catch(error => {
-            console.error('Error saving post:', error);
-        });
+            .catch(error => {
+                console.error('Error saving post:', error);
+            });
     }
 
     return (
@@ -51,6 +51,6 @@ const CreatePost = (user) => {
 
     );
 
-    }
+}
 
 export default CreatePost;

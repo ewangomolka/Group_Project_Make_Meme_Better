@@ -1,6 +1,6 @@
 const baseURL = 'http://localhost:9000/api/users/'
 
-
+// For users:
 export const getUsers = () => {
     return fetch(baseURL)
         .then(res => res.json())
@@ -10,9 +10,9 @@ export const postNewUser = (payload) => {
     return fetch(baseURL, {
         method: 'POST',
         body: JSON.stringify(payload),
-        headers: { 'Content-Type' : 'application/json' }
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
 
 export const deleteUser = (id) => {
@@ -25,16 +25,23 @@ export const updateUser = (id, payload) => {
     return fetch(baseURL + id, {
         method: 'PUT',
         body: JSON.stringify(payload),
-        header: {'Content-Type': 'application/json'}
+        header: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json())
+        .then(res => res.json())
 };
+
+// For posts:
+export const getPosts = () => {
+    return fetch(baseURL + 'post')
+        .then(res => res.json())
+}
+
 
 export const createPostForUser = (id, post) => {
     return fetch(baseURL + id + '/post', {
         method: 'POST',
         body: JSON.stringify(post),
-        headers: { 'Content-Type': 'application/json'}
+        headers: { 'Content-Type': 'application/json' }
     })
-    .then(res => res.json())
+        .then(res => res.json())
 }
