@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import ForgotPassword from "./ForgotPassword"
+import CreateForm from "./CreateForm"
 
 const Login = ({ onSubmitLogin}) => {
 
@@ -8,6 +9,7 @@ const Login = ({ onSubmitLogin}) => {
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
     const [show, setShow] =useState(false)
+    const [visable, setVisable] =useState(false)
 
     const handleUsernameOrEmailChange = (event) => {
         setUsernameOrEmail(event.target.value)
@@ -49,6 +51,10 @@ const Login = ({ onSubmitLogin}) => {
                 <div>
                     <button onClick={() => setShow(true)}>Forget Password?</button>
                     <ForgotPassword onClose={() => setShow(false)} show={show}/>
+                  </div>  
+                  <div>
+                    <button onClick={() => setVisable(true)}>create an account?</button>
+                    <CreateForm onClose={() => setVisable(false)} show={visable}/>
                 </div>
                 </div> 
             )

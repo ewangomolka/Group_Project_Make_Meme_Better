@@ -1,11 +1,14 @@
 import React, {useState}from 'react';
 
-const CreateForm = ({postNewUser}) => {
+const CreateForm = (props, {postNewUser}) => {
     const [name, setName] = useState("")
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
+    if (!props.show){
+        return null
+    }
 
     const handleNameChange = (event) => {
         setName(event.target.value)
@@ -49,6 +52,7 @@ const CreateForm = ({postNewUser}) => {
                 <input type="text" id="email" placeholder="  EMAIL  " value={email} onChange={handleEmailChange} required />
                 <input type="text" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
                 <input type="submit" value="Create Account" />
+                <button onClick={props.onClose}>welcome my guy will close the form</button>
             </form>
         </>
 
