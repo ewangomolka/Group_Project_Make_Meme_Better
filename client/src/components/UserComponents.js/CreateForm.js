@@ -1,7 +1,6 @@
 import React, {useState}from 'react';
-import { postNewUser } from '../../services/UserServices';
 
-const CreateForm = (postNewUser) => {
+const CreateForm = ({postNewUser}) => {
     const [name, setName] = useState("")
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -30,7 +29,7 @@ const CreateForm = (postNewUser) => {
         };
 
     postNewUser(user)
-      .then(data => {
+      .then((data) => {
         console.log('User created:', data);
         setUsername("");
         setEmail("");
