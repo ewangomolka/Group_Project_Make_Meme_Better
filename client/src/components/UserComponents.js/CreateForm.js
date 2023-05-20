@@ -41,7 +41,6 @@ const CreateForm = (postNewUser) => {
       });
     }
 
-const CreateForm = () => {
     return (
         <>
             <h1>Create Form</h1>
@@ -55,4 +54,6 @@ const CreateForm = () => {
         </>
 
     );
+
 }
+export default CreateForm;
