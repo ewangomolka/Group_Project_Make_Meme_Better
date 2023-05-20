@@ -2,7 +2,7 @@ import React , {useState, useEffect}from 'react';
 import Login from '../components/UserComponents.js/LoginForm';
 import forgotPassword from '../components/UserComponents.js/ForgotPassword';
 import CreateForm from '../components/UserComponents.js/CreateForm';
-import { getUsers, deleteUser, addUser} from '../services/UserServices.js'
+import { getUsers, deleteUser, postNewUser, addUser} from '../services/UserServices.js'
 
 const UserContainer = () => {
     const[users, setUsers] = useState([])
@@ -19,11 +19,11 @@ const UserContainer = () => {
         temp.push(user)
         setUsers(temp)
     }
-    //const onNewUserSubmit = (user) => {
-    //    postNewUser(user).then((data) => {
-    //        addUser(data);
-    //    })
-    //}
+    const onNewUserSubmit = (user) => {
+       postNewUser(user).then((data) => {
+            addUser(data);
+    })
+    
 
     const removeUser = (user) => {
         const temp = users.map(s => s);
@@ -49,5 +49,6 @@ const UserContainer = () => {
         </>
      );
 
+}
 }
 export default UserContainer;
