@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import ForgotPassword from "./ForgotPassword"
 
 const Login = ({ onSubmitLogin}) => {
 
@@ -6,6 +7,7 @@ const Login = ({ onSubmitLogin}) => {
     const [password, setPassword] = useState("")
     const [email, setEmail] = useState("")
     const [username, setUsername] = useState("")
+    const [show, setShow] =useState(false)
 
     const handleUsernameOrEmailChange = (event) => {
         setUsernameOrEmail(event.target.value)
@@ -37,14 +39,18 @@ const Login = ({ onSubmitLogin}) => {
         setPassword("")
         }
             return(
-                <>
+                <div>
                 <h2>Sign in </h2>
                 <form onSubmit={handleSubmit}>
                     <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={usernameOrEmail} onChange={handleUsernameOrEmailChange} required/>
                     <input type="text" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required/>
                     <input type="submit" value="Log in" />
                 </form>
-                </> 
+                <div>
+                    <button onClick={() => setShow(true)}>Forget Password?</button>
+                    <ForgotPassword onClose={() => setShow(false)} show={show}/>
+                </div>
+                </div> 
             )
 }
 export default Login;
