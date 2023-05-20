@@ -1,7 +1,7 @@
 import React from 'react';
-import Login from '../components/LoginForm';
-import forgotPassword from '../components/ForgotPassword';
-import CreateForm from '../components/CreateForm';
+import Login from '../components/UserComponents.js/LoginForm';
+import forgotPassword from '../components/UserComponents.js/ForgotPassword';
+import CreateForm from '../components/UserComponents.js/CreateForm';
 
 const UserContainer = () => {
     return ( 
