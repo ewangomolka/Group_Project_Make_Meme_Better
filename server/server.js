@@ -23,5 +23,5 @@ MongoClient.connect('mongodb://localhost:27017', { useUnifiedTopology: true })
   .catch(console.error);
 
 app.listen(9000, function() {
-console.log(`Movie Users server running on port ${this.address().port}`);
+console.log(`server running on port ${this.address().port}`);
 });
