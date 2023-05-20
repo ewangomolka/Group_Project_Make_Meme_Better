@@ -1,9 +1,15 @@
 import React from 'react';
 
-const forgotPassword = () => {
+const forgotPassword = (props) => {
+
+    if (!props.show){
+        return null
+    }
+
     return ( 
         <div>
-            <h2>oh dear, it looks like youve forgotten your password. </h2>
+            <h2>you are a silly goose!</h2>
+            <button onClick={props.onClose}>I member</button>
         </div>
      );
 }
