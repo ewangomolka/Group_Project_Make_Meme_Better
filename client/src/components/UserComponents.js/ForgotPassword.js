@@ -8,8 +8,10 @@ const forgotPassword = (props) => {
 
     return ( 
         <div>
+            <img src="https://media.tenor.com/Ym4iH4Mr7McAAAAM/silly-goose-silly-goose-moment.gif"
+            alt="sillygoose"/>
             <h2>you are a silly goose!</h2>
-            <button onClick={props.onClose}>I member</button>
+            <button onClick={props.onClose}>oh wait! I member!</button>
         </div>
      );
 }

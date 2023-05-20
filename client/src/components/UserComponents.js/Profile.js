@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../components/MainComponents.js/NavBar';
+import FeedItem from '../components/MainComponents.js/FeedItem';
 
 const Profile = ({users}) => {
 
