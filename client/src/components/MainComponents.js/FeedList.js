@@ -1,8 +1,19 @@
-import Reatc from 'react';
+import React from 'react';
+import FeedItem from './FeedItem';
 
-const feedList = () => {
+const feedList = ({feedItems}) => {
+
+    const feedItemList = feedItems.map((feedItem) => {
+        return <FeedItem feedItem={feedItem} key={feedItem._id}/>
+    })
+
     return ( 
-        <h3> a list of feed items</h3>
+        <div>
+            <h3>a list of feed items</h3>
+            <div>
+            {feedItemList}
+            </div>
+        </div>
      );
 }
  
