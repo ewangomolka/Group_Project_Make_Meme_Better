@@ -15,14 +15,13 @@ const UserContainer = () => {
     }, [])
 
     const addUser = (user) =>{
-        const temp = users.map(s => s)
-        temp.push(user)
-        setUsers(temp)
+        setUsers([...users, user])
+   
     }
-    const onNewUserSubmit = (user) => {
-       postNewUser(user).then((data) => {
-            addUser(data);
-    })
+    // const onNewUserSubmit = (user) => {
+    //    postNewUser(user).then((data) => {
+    //         addUser(data);
+    // })
     
 
     const removeUser = (user) => {
@@ -50,5 +49,5 @@ const UserContainer = () => {
      );
 
 }
-}
+
 export default UserContainer;
