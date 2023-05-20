@@ -37,14 +37,14 @@ const UserContainer = () => {
         })
     }
 
-    const onLoginSubmit = (searchUser) => {
+    const onSubmitLogin = (searchUser) => {
         const workingUser = users.find(user => user.username === searchUser.username)
         setLoggedin(workingUser)
     }
 
     return(
         <>
-        <Login onLoginSubmit={onLoginSubmit}/>
+        <Login onLoginSubmit={onSubmitLogin}/>
         
         </>
      );
