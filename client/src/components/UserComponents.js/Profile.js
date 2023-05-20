@@ -15,7 +15,9 @@ const Profile = ({users}) => {
                 <NavBar/>
             </div>
             <div>
-                <h2>{user.name}</h2>
+
+                <h2>{user.username}</h2>
+
                 <p>Your posts:</p>
                 <div>
                     {userPostList}
@@ -26,3 +28,4 @@ const Profile = ({users}) => {
 }
  
 export default Profile;
+
