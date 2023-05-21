@@ -3,7 +3,7 @@ import NavBar from '../components/MainComponents.js/Navbar';
 import FeedList from '../components/MainComponents.js/FeedList';
 import { getMemes } from '../services/MainServices';
 
-const MainContainer = () => {
+const MainContainer = ({ onUserLogout }) => {
 
     const [feedItems, setFeedItems] = useState([]);
 
@@ -12,6 +12,10 @@ const MainContainer = () => {
             setFeedItems(allMemes)
         })
     }, [feedItems])
+
+    const handleLogout = () => {
+      onUserLogout();
+    }
 
     return ( 
         <div>
@@ -24,6 +28,7 @@ const MainContainer = () => {
             <FeedList feedItems={feedItems}/>
             </div>
             <footer>H.E.C. ltd</footer>
+            <button onClick={handleLogout}>temp logout button</button>
         </div>
      );
 }
