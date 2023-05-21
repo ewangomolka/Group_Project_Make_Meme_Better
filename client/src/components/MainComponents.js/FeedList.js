@@ -1,20 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { getUsers } from '../../services/UserServices';
 import FeedItem from './FeedItem';
 
-const feedList = ({feedItems}) => {
+const FeedList = () => {
+  const [users, setUsers] = useState([]);
 
-    const feedItemList = feedItems.map((feedItem) => {
-        return <FeedItem feedItem={feedItem} key={feedItem._id}/>
-    })
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-    return ( 
-        <div>
-            <h3>a list of feed items</h3>
-            <div>
-            {feedItemList}
-            </div>
-        </div>
-     );
-}
- 
-export default feedList;
+  const fetchUsers = () => {
+    getUsers()
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching user data:', error);
+      });
+  };
+
+  return (
+    <div>
+      {users.map((user) => (
+        <FeedItem key={user._id} user={user} />
+      ))}
+    </div>
+  );
+};
+
+export default FeedList;

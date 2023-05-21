@@ -32,31 +32,55 @@ export const updateUser = (id, payload) => {
 
 export const loginUser = (user) => { // user is the user that is trying to log in
     return fetch(baseURL, {
-      method: 'POST',
-      body: JSON.stringify(user), 
-      headers: {
-        'Content-Type': 'application/json',
-      },
+        method: 'POST',
+        body: JSON.stringify(user),
+        headers: {
+            'Content-Type': 'application/json',
+        },
     })
-      .then((response) => { 
-        console.log('Login response:', response);
-        return response.json();
-      })
-      .then((data) => { // data is the user that is logged in
-        console.log('Login data:', data);
-        return data;
-      })
-      .catch((error) => { 
-        console.error('Login error:', error);
-        throw error;
-      });
-  };
+        .then((response) => {
+            console.log('Login response:', response);
+            return response.json();
+        })
+        .then((data) => { // data is the user that is logged in
+            console.log('Login data:', data);
+            return data;
+        })
+        .catch((error) => {
+            console.error('Login error:', error);
+            throw error;
+        });
+};
 
 // For posts:
-export const getPosts = () => {
-    return fetch(baseURL + 'post')
-        .then(res => res.json())
-}
+// export const getPosts = () => {
+//     return fetch(baseURL)
+//         .then(res => res.json());
+// }
+export const getPosts = (id) => {
+    return fetch(baseURL + id + '/posts')
+      .then((res) => res.json())
+      .catch((error) => console.log(error));
+  };
+
+
+// export const getPosts = () => {
+//     return fetch(baseURL)
+//       .then((res) => res.json())
+//       .then((data) => {
+//         const posts = data.reduce((acc, user) => {
+//           if (user.post && user.post.length > 0) {
+//             user.post.forEach((post) => {
+//               acc.push({ user: user.username, content: post.content });
+//             });
+//           }
+//           return acc;
+//         }, []);
+//         return posts;
+//       })
+//       .catch((error) => console.log(error));
+//   };
+
 
 export const createPostForUser = (id, post) => {
     return fetch(baseURL + id + 'post', {
