@@ -7,16 +7,20 @@ import MainContainer from './MainContainer';
 
 const UserContainer = () => {
     const [users, setUsers] = useState([])
-    const [loggedIn, setLoggedin] = useState(null)
+    const [loggedInUser, setLoggedInUser] = useState(null)
 
     useEffect(() => {
         getUsers()
             .then(data => { setUsers(data) })
 
+        const storedUser = localStorage.getItem('loggedInUser') // gets the logged in user from local storage if it exists 
+        if (storedUser) { 
+            setLoggedInUser(JSON.parse(storedUser)) // if the user exists, it sets the logged in user to the user in local storage
+        }
     }, [])
 
     const addUser = (user) => {
-        setUsers([...users, user])
+        setUsers([...users, user]) 
 
     }
     // const onNewUserSubmit = (user) => {
@@ -58,17 +62,22 @@ const UserContainer = () => {
                 (user.username === searchUser.username || user.email === searchUser.username) &&
                 user.password === searchUser.password
         );
-
-        if (workingUser) { // if user exists
+        if (workingUser) { 
             console.log("User Logged In");
-            setLoggedin(workingUser);
+            setLoggedInUser(workingUser);
+            localStorage.setItem('loggedInUser', JSON.stringify(workingUser)); // stores the logged in user in local storage
         } else { // if user doesn't exist
             console.log("Authentication failed");
         }
     };
 
-    if (loggedIn) { 
-        return <MainContainer user={loggedIn} />; // if logged in, show main container
+    const onUserLogout = () => {
+        setLoggedInUser(null);
+        localStorage.removeItem('loggedInUser') // removes the logged in user from local storage
+    }
+
+    if (loggedInUser) {
+        return <MainContainer user={loggedInUser} onUserLogout={onUserLogout} />; // if logged in, show main container with logged in user and logout function is passed through
     }
     return <Login onSubmitLogin={onSubmitLogin} />;
 }
