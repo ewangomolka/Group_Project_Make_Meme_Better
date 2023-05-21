@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import { getPosts, getComments } from '../../services/UserServices';
 
+// feed item will be card with a post taken from the database
 const FeedItem = ({ user }) => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
@@ -10,11 +11,11 @@ const FeedItem = ({ user }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetchPosts();
+    fetchPosts(); // fetching the posts from the API
   }, []);
 
   const fetchPosts = () => {
-    getPosts()
+    getPosts() // fetching the posts from the API and updating the state
       .then((fetchedPosts) => {
         setPosts(fetchedPosts);
       })
@@ -23,6 +24,7 @@ const FeedItem = ({ user }) => {
       });
   };
 
+  // fetch comments
   const fetchComments = (postId) => {
     getComments(postId)
       .then((fetchedComments) => {
@@ -33,18 +35,22 @@ const FeedItem = ({ user }) => {
       });
   };
 
-  const handleLike = () => {
+    // it will also include a button that lets other users like the post
+    const handleLike = () => {
     setLiked(!isLiked);
   };
 
+  // it will also include a button that lets other users share the post
   const handleShare = () => {
     setShared(!isShared);
   };
 
+    // it will also include a button that lets other users comment on the post
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
 
+// the feed item needs to generate a post from the database
   return (
     <>
       <h1>Feed Item</h1>
@@ -80,7 +86,7 @@ const FeedItem = ({ user }) => {
         {isShared ? 'Unshare' : 'Share'}
       </button>
 
-      {showModal && <CommentForm />}
+      {showModal && <CommentForm />} 
     </>
   );
 };
