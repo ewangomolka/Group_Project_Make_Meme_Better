@@ -1,6 +1,6 @@
 import React from 'react';
 
-const forgotPassword = (props) => {
+const ForgotPassword = (props) => {
 
     if (!props.show){
         return null
@@ -16,4 +16,4 @@ const forgotPassword = (props) => {
      );
 }
  
-export default forgotPassword;
+export default ForgotPassword;

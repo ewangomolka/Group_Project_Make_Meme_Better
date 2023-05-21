@@ -1,4 +1,4 @@
-use mmfb;
+use mmfb
 db.dropDatabase();
 
 db.users.insertMany([

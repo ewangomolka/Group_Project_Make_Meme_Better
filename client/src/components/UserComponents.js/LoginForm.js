@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import ForgotPassword from "./ForgotPassword"
 import CreateForm from "./CreateForm"
+import { loginUser } from "../../services/UserServices"
 
 const Login = ({ onSubmitLogin }) => {
 
@@ -20,32 +21,41 @@ const Login = ({ onSubmitLogin }) => {
     const handleEmailChange = (event) => {
         setEmail(event.target.value)
     }
-    const handleSubmit = (event) => {
-        event.preventDefault()
+
+    const handleSubmit = (event) => { 
+        event.preventDefault();
         const user = {
-            username: username,
-            email: email,
-            password: password
-        }
-        if (usernameOrEmail === user.email || usernameOrEmail === user.username) {
-            if (password === user.password) {
-                console.log("User Logged In");
+          username,
+          email,
+          password,
+        };
+        loginUser(user) // loginUser is a function that takes in a user object and returns a promise
+          .then((data) => { // data is the user that is logged in
+            if (
+              data && // if data exists
+              data.email === email && // if the email matches
+              data.password === password // if the password matches
+            ) {
+              console.log('User Logged In');
             } else {
-                console.log("wrong password");
+              console.log('Authentication failed');
             }
-        } else {
-            console.log("please check you username or Email");
-        }
-        onSubmitLogin(user)
-        setUsername("")
-        setPassword("")
-    }
+          })
+          .catch((error) => {
+            console.error('Error occurred:', error);
+          });
+        onSubmitLogin(user);
+        setUsername('');
+        setPassword('');
+      };
+
+
     return (
         <div>
             <h2>Sign in </h2>
             <form onSubmit={handleSubmit}>
                 <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={usernameOrEmail} onChange={handleUsernameOrEmailChange} required />
-                <input type="password" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
+                <input text="password" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
                 <input type="submit" value="Log in" />
             </form>
             <div>
