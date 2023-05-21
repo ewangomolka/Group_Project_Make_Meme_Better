@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import ForgotPassword from "./ForgotPassword"
-import CreateForm from "./CreateForm"
 import { loginUser } from "../../services/UserServices"
 import { postNewUser } from "../../services/UserServices"
 
