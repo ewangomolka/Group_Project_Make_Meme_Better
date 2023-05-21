@@ -11,12 +11,17 @@ const Login = ({onSubmitLogin, addUser}) => {
     const [username, setUsername] = useState("")
     const [show, setShow] = useState(false)
     const [visible, setVisible] = useState(false)
+    const [buttonClicked, setButtonClicked] = useState(false)
     const [formData, setFormData] = useState({
         username: "",
         email: "",
         password: "",
         post: []
     })
+
+    const handleCreate = () => {
+      setButtonClicked(!buttonClicked)
+    }
     
     const onChange = (e) => {
         const newFormData = Object.assign({}, formData);
@@ -88,8 +93,8 @@ const Login = ({onSubmitLogin, addUser}) => {
                 <ForgotPassword onClose={() => setShow(false)} show={show} />
             </div>
             <div>
-                <button onClick={() => setVisible(true)}>create an account?</button>
-                <div>
+                <button onClick={handleCreate}>create an account?</button>
+                {buttonClicked ? <div>
                 <h1>Create Form</h1>
                 <form onSubmit={onSubmit}>
                     <input type="text" id="user" name='username' placeholder="  USERNAME  " value={formData.username} onChange={onChange} required />
@@ -97,7 +102,8 @@ const Login = ({onSubmitLogin, addUser}) => {
                     <input type="password" id="password" name='password' placeholder="  PASSWORD  " value={formData.password} onChange={onChange} required />
                     <input type="submit" value="Create Account" />
                 </form>
-                </div>
+                <button onClick={handleCreate}>Cancel</button>
+                </div> : null}
             </div>
         </div>
     )
