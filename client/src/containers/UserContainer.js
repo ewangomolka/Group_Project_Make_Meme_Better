@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from '../components/UserComponents.js/LoginForm';
 import ForgotPassword from '../components/UserComponents.js/ForgotPassword';
 import CreateForm from '../components/UserComponents.js/CreateForm';
-import { getUsers, deleteUser, postNewUser, addUser } from '../services/UserServices.js'
+import { getUsers, deleteUser, postNewUser} from '../services/UserServices.js'
 import MainContainer from './MainContainer';
 
 const UserContainer = () => {
@@ -70,7 +70,7 @@ const UserContainer = () => {
     if (loggedIn) { 
         return <MainContainer user={loggedIn} />; // if logged in, show main container
     }
-    return <Login onSubmitLogin={onSubmitLogin} />;
+    return <Login onSubmitLogin={onSubmitLogin} addUser={addUser}/>;
 }
 
 export default UserContainer;

@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import ForgotPassword from "./ForgotPassword"
 import CreateForm from "./CreateForm"
 import { loginUser } from "../../services/UserServices"
+import { postNewUser } from "../../services/UserServices"
 
-const Login = ({ onSubmitLogin }) => {
+const Login = ({onSubmitLogin, addUser}) => {
 
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -11,6 +12,30 @@ const Login = ({ onSubmitLogin }) => {
     const [username, setUsername] = useState("")
     const [show, setShow] = useState(false)
     const [visible, setVisible] = useState(false)
+    const [formData, setFormData] = useState({
+        username: "",
+        email: "",
+        password: "",
+        post: []
+    })
+    
+    const onChange = (e) => {
+        const newFormData = Object.assign({}, formData);
+        newFormData[e.target.name] = e.target.value;
+        setFormData(newFormData);
+    }
+
+    const onSubmit = (event) => {
+        event.preventDefault();
+        postNewUser(formData).then((data) => {
+            addUser(data);
+        })
+        setFormData({
+            username: "",
+            email: "",
+            password: ""
+        })
+    }
 
     const handleUsernameOrEmailChange = (event) => {
         setUsernameOrEmail(event.target.value)
@@ -50,6 +75,7 @@ const Login = ({ onSubmitLogin }) => {
       };
 
 
+
     return (
         <div>
             <h2>Sign in </h2>
@@ -64,7 +90,15 @@ const Login = ({ onSubmitLogin }) => {
             </div>
             <div>
                 <button onClick={() => setVisible(true)}>create an account?</button>
-                <CreateForm onClose={() => setVisible(false)} show={visible} />
+                <div>
+                <h1>Create Form</h1>
+                <form onSubmit={onSubmit}>
+                    <input type="text" id="user" name='username' placeholder="  USERNAME  " value={formData.username} onChange={onChange} required />
+                    <input type="text" id="email" name='email' placeholder="  EMAIL  " value={formData.email} onChange={onChange} required />
+                    <input type="password" id="password" name='password' placeholder="  PASSWORD  " value={formData.password} onChange={onChange} required />
+                    <input type="submit" value="Create Account" />
+                </form>
+                </div>
             </div>
         </div>
     )
