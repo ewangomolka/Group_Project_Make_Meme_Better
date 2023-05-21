@@ -39,7 +39,6 @@ const CommentForm = () => {
         console.log('form submitted');
     }
 
-
     // drop down box to select the meme and be able to post it
 
     return (
