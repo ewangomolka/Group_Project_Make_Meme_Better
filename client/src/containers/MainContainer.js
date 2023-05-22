@@ -6,6 +6,7 @@ import { getMemes } from '../services/MainServices';
 const MainContainer = ({ onUserLogout }) => {
 
     const [feedItems, setFeedItems] = useState([]);
+    const [users, setUsers] = useState([])
 
     useEffect(() => {
         getMemes().then((allMemes) => {
@@ -17,12 +18,17 @@ const MainContainer = ({ onUserLogout }) => {
       onUserLogout();
     }
 
+    const removeUser = (id) => {
+        const usersToKeep = users.filter(user => user._id!==id)
+        setUsers(usersToKeep)
+    }
+
     return ( 
         <div>
             <h1>Your Feed!</h1>
             <p>prof_pic</p>
             <div>
-            <NavBar/>
+            <NavBar removeUser={removeUser}/>
             </div>
             <div>
             <FeedList feedItems={feedItems}/>
