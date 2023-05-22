@@ -8,7 +8,7 @@ import CreatePost from '../components/MainComponents/CreatePost';
 import Support from '../components/MainComponents/Support';
 
 
-const MainContainer = ({ users, onUserLogout, removeUser }) => {
+const MainContainer = ({ users, user, onUserLogout, removeUser, onUserDelete }) => {
 
     const [feedItems, setFeedItems] = useState([]);
 
@@ -37,7 +37,7 @@ const MainContainer = ({ users, onUserLogout, removeUser }) => {
                 <NavBar handleLogout={handleLogout}/>
             <Routes> 
             <Route path="/" element = {<FeedList users={users} removeUser={removeUser}/>}/> 
-            <Route path="/profile" element = {<Profile/>}/>
+            <Route path="/profile" element = {<Profile key={user._id} user={user} removeUser={removeUser}/>}/>
             <Route path="/upload" element = {<CreatePost users={users}/>}/>
             <Route path="/support" element = {<Support/>}/> 
             </Routes>

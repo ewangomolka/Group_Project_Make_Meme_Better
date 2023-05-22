@@ -50,20 +50,18 @@ const addUser = (user) => {
 
 }
 
-const removeUser = (user) => {
-  const temp = users.map(s => s);
-  let index = temp.indexOf(user);
-  temp.splice(index, 1)
-  setUsers(temp)
+const removeUser = (id) => {
+  const usersToKeep = users.filter(user => user._id !== id)
+  setUsers(usersToKeep)
+  // const newUsers = [...users];
+  // const index = newUsers.indexOf(user);
+  // newUsers.splice(index, 1)
+  // setUsers(newUsers)
 }
-const onUserDelete = (id) => {
-  deleteUser(id).then((data) => {
-      removeUser(data);
-  })
-}
+
   return (
     <div className="App">
-      <UserContainer users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser} onUserDelete={onUserDelete}/>
+      <UserContainer users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser}/>
 
       
     </div>
