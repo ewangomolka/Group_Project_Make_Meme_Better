@@ -10,6 +10,8 @@ const FeedItem = ({ user, removeUser }) => {
   const [isLiked, setLiked] = useState(false);
   const [isShared, setShared] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+
 
   useEffect(() => {
     fetchPosts(); // fetching the posts from the API
@@ -58,29 +60,39 @@ const FeedItem = ({ user, removeUser }) => {
     setShowModal(!showModal);
   };
 
+  const handleToggleComments = () => {
+    setShowComments(!showComments);
+  };
+
 // the feed item needs to generate a post from the database
   return (
-    <>
+     <>
       <h1>Feed Item</h1>
       <h3>{user.username}</h3>
       {user.post && user.post.length > 0 ? (
         user.post.map((post, index) => (
           <div key={index}>
             <p>{post.content}</p>
-            {post.comments.map((comment, commentIndex) => (
-              <div key={commentIndex}>
-                <p>User: {comment.user}</p>
-                <img src={comment.meme} alt="Comment Meme" />
+            {showComments && (
+              <div>
+                {post.comments.map((comment, commentIndex) => (
+                  <div key={commentIndex}>
+                    <p>User {comment.user} posted:</p>
+                    <img src={comment.meme} alt="Comment Meme" />
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>  
+            )}
+          </div>
         ))
       ) : (
         <p>No posts available</p>
       )}
 
       <button onClick={handleToggleModal}>Comment</button>
-      <button>Edit</button>
+      <button onClick={handleToggleComments}>
+        {showComments ? 'Hide Comments' : 'Show Comments'}
+      </button>
       <button
         onClick={handleLike}
         className={isLiked ? 'like-button liked' : 'like-button'}
@@ -94,7 +106,7 @@ const FeedItem = ({ user, removeUser }) => {
         {isShared ? 'Unshare' : 'Share'}
       </button>
 
-      {showModal && <CommentForm />} 
+      {showModal && <CommentForm />}
     </>
   );
 };

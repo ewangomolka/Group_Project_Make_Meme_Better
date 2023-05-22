@@ -32,7 +32,7 @@ export const updateUser = (id, payload) => {
 
 export const loginUser = (user) => { // user is the user that is trying to log in
     return fetch(baseURL, {
-        
+
         body: JSON.stringify(user),
         headers: {
             'Content-Type': 'application/json',
@@ -59,9 +59,9 @@ export const loginUser = (user) => { // user is the user that is trying to log i
 // }
 export const getPosts = (id) => {
     return fetch(baseURL + id + '/posts')
-      .then((res) => res.json())
-      .catch((error) => console.log(error));
-  };
+        .then((res) => res.json())
+        .catch((error) => console.log(error));
+};
 
 // export const getPosts = () => {
 //     return fetch(baseURL)
@@ -92,8 +92,8 @@ export const createPostForUser = (id, post) => {
 
 
 // for comments:
-export const getComments = (id) => {
-    return fetch(baseURL + 'post/' + id + '/comment')
+export const getComments = () => {
+    return fetch(baseURL)
         .then(res => res.json());
 }
 
