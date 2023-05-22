@@ -31,7 +31,7 @@ function App() {
     );
     if (workingUser) { 
       
-        setLoggedInUser(searchUser)
+        setLoggedInUser(workingUser)
 
         // localStorage.setItem('loggedInUser', JSON.stringify(workingUser)); // stores the logged in user in local storage
     } else { // if user doesn't exist
