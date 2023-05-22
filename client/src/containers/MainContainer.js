@@ -8,7 +8,7 @@ import CreatePost from '../components/MainComponents/CreatePost';
 import Support from '../components/MainComponents/Support';
 
 
-const MainContainer = ({ users, user, onUserLogout, removeUser, onUserDelete }) => {
+const MainContainer = ({ users, user, onUserLogout, removeUser }) => {
 
     const [feedItems, setFeedItems] = useState([]);
 
