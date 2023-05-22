@@ -73,7 +73,7 @@ const FeedItem = ({ user, removeUser }) => {
                 <img src={comment.meme} alt="Comment Meme" />
               </div>
             ))}
-          </div>
+          </div>  
         ))
       ) : (
         <p>No posts available</p>

@@ -34,7 +34,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, onUserDelete }) 
             <p>prof_pic</p>
         <div>
             <Router>
-                <NavBar/>
+                <NavBar handleLogout={handleLogout}/>
             <Routes> 
             <Route path="/" element = {<FeedList users={users} removeUser={removeUser}/>}/> 
             <Route path="/profile" element = {<Profile key={user._id} user={user} removeUser={removeUser}/>}/>
@@ -43,7 +43,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, onUserDelete }) 
             </Routes>
             </Router>
             <footer>H.E.C. ltd</footer>
-            <button onClick={handleLogout}>temp logout button</button>
+            {/* <button onClick={handleLogout}>temp logout button</button> */}
         </div>
         </div>
      );

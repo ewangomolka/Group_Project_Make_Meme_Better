@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from "react-router-dom";
 import './SideBar.css'
 
-function NavBar() {
+function NavBar({ handleLogout }) {
   const [isActive, setIsActive] = useState(false);
 
   const toggleSidebar = () => {
@@ -36,21 +36,24 @@ function NavBar() {
         </ul>
         <div>
           <ul> */}
-              <li>
-                  <Link to="/">Feed</Link>
-              </li>
-              <li>
-                  <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                  <Link to="/upload">Upload</Link>
-              </li>
-              <li>
-                  <Link to="/support">Support</Link>
-              </li>
-          </ul>     
+          <li>
+            <Link to="/">Feed</Link>
+          </li>
+          <li>
+            <Link to="/">Profile</Link>
+          </li>
+          <li>
+            <Link to="/">Upload</Link>
+          </li>
+          <li>
+            <Link to="/">Support</Link>
+          </li>
+          <li>
+            <Link to="/logout" onClick={handleLogout}>Logout</Link>
+          </li>
+        </ul>
       </div>
-     
+
     </>
   );
 }
