@@ -40,13 +40,13 @@ function NavBar({ handleLogout }) {
             <Link to="/">Feed</Link>
           </li>
           <li>
-            <Link to="/">Profile</Link>
+            <Link to="/profile">Profile</Link>
           </li>
           <li>
-            <Link to="/">Upload</Link>
+            <Link to="/upload">Upload</Link>
           </li>
           <li>
-            <Link to="/">Support</Link>
+            <Link to="/support">Support</Link>
           </li>
           <li>
             <Link to="/logout" onClick={handleLogout}>Logout</Link>
