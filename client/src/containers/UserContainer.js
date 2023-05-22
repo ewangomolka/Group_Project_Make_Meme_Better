@@ -39,7 +39,7 @@ const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUse
     }
     return (
         <div>
-        <Login onSubmitLogin={onSubmitLogin} addUser={addUser}/>;
+        <Login onSubmitLogin={onSubmitLogin} addUser={addUser}/>
         </div>
         )
 }
