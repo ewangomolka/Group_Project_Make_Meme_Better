@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from '../MainComponents/Navbar';
 import FeedItem from '../MainComponents/FeedItem';
 import { deleteUser } from '../../services/UserServices';
+import ProfileFeedList from './ProfileListFeed';
 
 const Profile = ({user, removeUser}) => {
 
@@ -23,6 +24,7 @@ const Profile = ({user, removeUser}) => {
                 <p>{user.username}</p>
                 <div>
                 <p>yo mama</p>
+                <ProfileFeedList user={user}/>
                 <button onClick={handleDelete}>bye Felicia</button>
                 </div>
             </div>
