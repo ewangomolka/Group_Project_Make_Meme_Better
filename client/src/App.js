@@ -52,7 +52,7 @@ const addUser = (user) => {
 
 const removeUser = (id) => {
   const usersToKeep = users.filter(user => user._id !== id)
-  setUsers(usersToKeep)
+  setUsers(usersToKeep);
   // const newUsers = [...users];
   // const index = newUsers.indexOf(user);
   // newUsers.splice(index, 1)
