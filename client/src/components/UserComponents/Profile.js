@@ -3,10 +3,12 @@ import NavBar from '../MainComponents/Navbar';
 import FeedItem from '../MainComponents/FeedItem';
 import { deleteUser } from '../../services/UserServices';
 import ProfileFeedList from './ProfileListFeed';
+import {Link} from 'react-router-dom';
 
-const Profile = ({user, removeUser}) => {
+const Profile = ({user, removeUser, handleLogout}) => {
 
     const handleDelete = () => {
+        handleLogout();
         deleteUser(user._id)
         .then(() => {
             removeUser(user._id)
@@ -25,7 +27,7 @@ const Profile = ({user, removeUser}) => {
                 <div>
                 <p>yo mama</p>
                 <ProfileFeedList user={user}/>
-                <button onClick={handleDelete}>bye Felicia</button>
+                <Link to="/"><button onClick={handleDelete}>bye Felicia</button></Link>
                 </div>
             </div>
         </div>
