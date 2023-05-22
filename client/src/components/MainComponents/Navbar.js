@@ -49,7 +49,7 @@ function NavBar({ handleLogout }) {
             <Link to="/support">Support</Link>
           </li>
           <li>
-            <Link to="/logout" onClick={handleLogout}>Logout</Link>
+            <Link to="/" onClick={handleLogout}>Logout</Link>
           </li>
         </ul>
       </div>
