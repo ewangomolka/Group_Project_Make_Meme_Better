@@ -3,15 +3,14 @@ import NavBar from '../MainComponents/Navbar';
 import FeedItem from '../MainComponents/FeedItem';
 import { deleteUser } from '../../services/UserServices';
 
-const Profile = ({users, removeUser}) => {
+const Profile = ({user, removeUser}) => {
 
-    const userPostList = users.post.map((user) => {
-        <FeedItem
-        key={user._id} user={user}
-        />
-    })
-
-
+    const handleDelete = () => {
+        deleteUser(user._id)
+        .then(() => {
+            removeUser(user._id)
+        })
+    }
 
     return ( 
         <div>
@@ -21,9 +20,10 @@ const Profile = ({users, removeUser}) => {
             <div>
                 <div>
                 </div>
-                <p>Your posts:</p>
+                <p>{user.username}</p>
                 <div>
-                    {userPostList}
+                <p>yo mama</p>
+                <button onClick={handleDelete}>bye Felicia</button>
                 </div>
             </div>
         </div>
