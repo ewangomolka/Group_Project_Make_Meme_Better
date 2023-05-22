@@ -44,6 +44,10 @@ const Login = ({onSubmitLogin, addUser}) => {
     const handleUsernameOrEmailChange = (event) => {
         setUsernameOrEmail(event.target.value)
     }
+
+    const handleUsernameChange = (event) => {
+      setUsername(event.target.value)
+  }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
     }
@@ -54,29 +58,32 @@ const Login = ({onSubmitLogin, addUser}) => {
     const handleSubmit = (event) => { 
         event.preventDefault();
         const user = {
-          username,
-          email,
-          password,
+          username: username,
+          email: email,
+          password: password
         };
-        loginUser(user) // loginUser is a function that takes in a user object and returns a promise
-          .then((data) => { // data is the user that is logged in
+
+        // loginUser(user) // loginUser is a function that takes in a user object and returns a promise
+        //   .then((data) => { // data is the user that is logged in
+        //     console.log("db response", data);
             if (
-              data && // if data exists
-              data.email === email && // if the email matches
-              data.password === password // if the password matches
+              user && // if data exists
+              user.email === email && // if the email matches
+              user.password === password // if the password matches
             ) {
-              console.log('User Logged In');
+              console.log('User Logged In', user);
+              onSubmitLogin(user);
             } else {
               console.log('Authentication failed');
             }
-          })
-          .catch((error) => {
-            console.error('Error occurred:', error);
-          });
-        onSubmitLogin(user);
-        setUsername('');
-        setPassword('');
-      };
+          }
+          // .catch((error) => {
+          //   console.error('Error occurred:', error);
+          // });
+        
+        // setUsername('');
+        // setPassword('');
+      
 
 
 
@@ -84,7 +91,7 @@ const Login = ({onSubmitLogin, addUser}) => {
         <div>
             <h2>Sign in </h2>
             <form onSubmit={handleSubmit}>
-                <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={usernameOrEmail} onChange={handleUsernameOrEmailChange} required />
+                <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={username} onChange={handleUsernameChange} required />
                 <input text="password" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
                 <input type="submit" value="Log in" />
             </form>
