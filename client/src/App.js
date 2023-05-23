@@ -30,6 +30,7 @@ function App() {
             user.password === searchUser.password
     );
     if (workingUser) { 
+        console.log("workingUser", workingUser);
       
         setLoggedInUser(workingUser)
 

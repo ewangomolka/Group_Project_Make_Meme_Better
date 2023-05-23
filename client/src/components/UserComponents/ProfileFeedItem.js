@@ -12,11 +12,13 @@ const ProfileFeedItem = ({ user }) => {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetchPosts(); // fetching the posts from the API
+    if(user.id){
+    fetchPosts(user.id); // fetching the posts from the API
+    }
   }, []);
 
-  const fetchPosts = () => {
-    getPosts() // fetching the posts from the API and updating the state
+  const fetchPosts = (id) => {
+    getPosts(id) // fetching the posts from the API and updating the state
       .then((fetchedPosts) => {
         setPosts(fetchedPosts);
       })
