@@ -3,7 +3,7 @@ import Login from '../components/UserComponents/LoginForm.js';
 import { getUsers, deleteUser, postNewUser} from '../services/UserServices.js'
 import MainContainer from './MainContainer';
 
-const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUser, removeUser, onUserDelete}) => {
+const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUser, removeUser, onUserDelete, handleEditClicked, postToEdit}) => {
 
 
 
@@ -35,7 +35,7 @@ const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUse
 
 
     if (loggedInUser) {
-        return <MainContainer users = {users} user={loggedInUser} onUserLogout={onUserLogout} removeUser={removeUser}/>; // if logged in, show main container with logged in user and logout function is passed through
+        return <MainContainer handleEditClicked={handleEditClicked} postToEdit={postToEdit} users = {users} user={loggedInUser} onUserLogout={onUserLogout} removeUser={removeUser}/>; // if logged in, show main container with logged in user and logout function is passed through
     }
     return (
         <div>

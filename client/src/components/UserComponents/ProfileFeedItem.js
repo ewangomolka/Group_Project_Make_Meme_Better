@@ -2,21 +2,25 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from '../MainComponents/CommentForm';
 import { getPosts, getComments } from '../../services/UserServices';
 import { deleteUser } from '../../services/UserServices';
+import EditPost from '../MainComponents/EditPost';
 
 // feed item will be card with a post taken from the database
-const ProfileFeedItem = ({ user }) => {
+const ProfileFeedItem = ({ user, handleEditClicked, postToEdit }) => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLiked, setLiked] = useState(false);
   const [isShared, setShared] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [showEdit, setShowEdit] = useState(false);
 
   useEffect(() => {
-    fetchPosts(); // fetching the posts from the API
+    if (user.id) {
+      fetchPosts(user.id);
+    }// fetching the posts from the API
   }, []);
 
-  const fetchPosts = () => {
-    getPosts() // fetching the posts from the API and updating the state
+  const fetchPosts = (id) => {
+    getPosts(id) // fetching the posts from the API and updating the state
       .then((fetchedPosts) => {
         setPosts(fetchedPosts);
       })
@@ -36,8 +40,8 @@ const ProfileFeedItem = ({ user }) => {
       });
   };
 
-    // it will also include a button that lets other users like the post
-    const handleLike = () => {
+  // it will also include a button that lets other users like the post
+  const handleLike = () => {
     setLiked(!isLiked);
   };
 
@@ -46,12 +50,16 @@ const ProfileFeedItem = ({ user }) => {
     setShared(!isShared);
   };
 
-    // it will also include a button that lets other users comment on the post
+  // it will also include a button that lets other users comment on the post
   const handleToggleModal = () => {
     setShowModal(!showModal);
   };
 
-// the feed item needs to generate a post from the database
+  const handleToggleEdit = () => {
+    setShowEdit(!showEdit);
+  };
+
+  // the feed item needs to generate a post from the database
   return (
     <>
       <h1>Feed Item</h1>
@@ -66,14 +74,14 @@ const ProfileFeedItem = ({ user }) => {
                 <img src={comment.meme} alt="Comment Meme" />
               </div>
             ))}
-          </div>  
+          </div>
         ))
       ) : (
         <p>No posts available</p>
       )}
 
       <button onClick={handleToggleModal}>Comment</button>
-      <button>Edit</button>
+      <button onClick={handleToggleEdit}>Edit</button>
       <button
         onClick={handleLike}
         className={isLiked ? 'like-button liked' : 'like-button'}
@@ -86,8 +94,8 @@ const ProfileFeedItem = ({ user }) => {
       >
         {isShared ? 'Unshare' : 'Share'}
       </button>
-
-      {showModal && <CommentForm />} 
+      {showEdit && <EditPost user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit} />}
+      {showModal && <CommentForm />}
     </>
   );
 };
