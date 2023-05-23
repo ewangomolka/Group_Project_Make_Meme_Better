@@ -57,6 +57,16 @@ export const loginUser = (user) => { // user is the user that is trying to log i
 //     return fetch(baseURL)
 //         .then(res => res.json());
 // }
+
+export const putPost = (id, payload) => {
+    return fetch(baseURL + id, {
+        method: 'PUT',
+        body: JSON.stringify(payload),
+        headers: { 'Content-Type': 'application/json'}
+    })
+    .then(res => res.json())
+}
+
 export const getPosts = (id) => {
     return fetch(baseURL + id + '/posts')
         .then((res) => res.json())
