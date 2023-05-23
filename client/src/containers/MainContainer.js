@@ -17,7 +17,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser }) => {
         getMemes().then((allMemes) => {
             setFeedItems(allMemes)
         })
-    }, [feedItems, removeUser])
+    }, [removeUser])
 
     const handleLogout = () => {
       onUserLogout();
@@ -31,12 +31,11 @@ const MainContainer = ({ users, user, onUserLogout, removeUser }) => {
     return ( 
         <div>
             <h1>Your Feed!</h1>
-            <p>prof_pic</p>
         <div>
             <Router>
                 <NavBar handleLogout={handleLogout}/>
             <Routes> 
-            <Route path="/" element = {<FeedList users={users} removeUser={removeUser}/>}/> 
+            <Route path="/" element = {<FeedList users={users} removeUser={removeUser} feedItems={feedItems}/>}/> 
             <Route path="/profile" element = {<Profile key={user._id} user={user} removeUser={removeUser} handleLogout={handleLogout}/>}/>
             <Route path="/upload" element = {<CreatePost users={users}/>}/>
             <Route path="/support" element = {<Support/>}/> 

@@ -67,7 +67,7 @@ const FeedItem = ({ user, removeUser }) => {
 
 // the feed item needs to generate a post from the database
   return (
-     <>
+     <div>
       <h1>Feed Item</h1>
       <h3>{user.username}</h3>
       {user.post && user.post.length > 0 ? (
@@ -108,7 +108,7 @@ const FeedItem = ({ user, removeUser }) => {
       </button>
 
       {showModal && <CommentForm />}
-    </>
+    </div>
   );
 };
 
