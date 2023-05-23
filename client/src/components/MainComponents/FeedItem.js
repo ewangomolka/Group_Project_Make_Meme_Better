@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import CommentForm from './CommentForm';
 import { getPosts, getComments } from '../../services/UserServices';
 import { deleteUser } from '../../services/UserServices';
+import './FeedItem.css'
 
 // feed item will be card with a post taken from the database
 const FeedItem = ({ user, removeUser }) => {
