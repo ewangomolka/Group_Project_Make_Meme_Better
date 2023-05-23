@@ -7,7 +7,7 @@ const FeedList = ({ users, removeUser }) => {
 
   const ScrollBox = styled.div`
     & {
-    height: 650px;
+    height: 400px;
     width: 450px;
     justify-content: center;
     overflow: auto;
