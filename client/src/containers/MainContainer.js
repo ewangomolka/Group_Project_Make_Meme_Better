@@ -10,7 +10,7 @@ import styled from 'styled-components';
 import '../App.css';
 
 
-const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicked, postToEdit }) => {
+const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicked, postToEdit, addPost, updatePostForUser }) => {
 
     const Footer = styled.footer`
     position: fixed;
@@ -56,7 +56,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
             <Routes> 
             <Route path="/" element = {<FeedList users={users} removeUser={removeUser} feedItems={feedItems}/>}/> 
             <Route path="/profile" element = {<Profile key={user._id} user={user} removeUser={removeUser} handleLogout={handleLogout} handleEditClicked={handleEditClicked} postToEdit={postToEdit}/>}/>
-            <Route path="/upload" element = {<CreatePost users={users}/>}/>
+            <Route path="/upload" element = {<CreatePost users={users} addPost={addPost} updatePostForUser={updatePostForUser} user={user}/>}/>
             <Route path="/support" element = {<Support/>}/> 
             </Routes>
             </Router>

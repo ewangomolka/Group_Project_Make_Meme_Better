@@ -1,4 +1,7 @@
+
+
 const baseURL = 'http://localhost:9000/api/users/'
+
 
 // For users:
 export const getUsers = () => {
@@ -91,10 +94,17 @@ export const getPosts = (id) => {
 //   };
 
 
-export const createPostForUser = (id, post) => {
-    return fetch(baseURL + id + 'post', {
-        method: 'POST',
-        body: JSON.stringify(post),
+export const createPostForUser = (payload) => {
+    console.log("createPostForUser called", payload);
+    const newPayload = {
+        username: payload.username,
+        email: payload.email,
+        password: payload.password,
+        post: payload.post
+    }
+    return fetch(baseURL + payload._id, {
+        method: 'PUT',
+        body: JSON.stringify(newPayload),
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json())

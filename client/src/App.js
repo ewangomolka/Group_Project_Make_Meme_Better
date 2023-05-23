@@ -3,7 +3,7 @@ import './App.css';
 import MainContainer from './containers/MainContainer';
 import UserContainer from './containers/UserContainer';
 import { useState, useEffect } from 'react'
-import { getUsers, deleteUser, postNewUser, putPost } from './services/UserServices.js';
+import { getUsers, deleteUser, postNewUser, putPost, createPostForUser } from './services/UserServices.js';
 import AnimatedBackground from './components/AnimatedBackground.js';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
     //     // setLoggedInUser(JSON.parse(storedUser))
     // } // gets the logged in user from local storage if it exists 
 
-  }, [postToEdit])
+  }, [])
 
   const onSubmitLogin = (searchUser) => { // searchUser is the user that is trying to log in
     console.log("search user", searchUser);
@@ -73,10 +73,17 @@ function App() {
     // setUsers(newUsers)
   }
 
+  const updatePostForUser = (updatedUser) => {
+    console.log("updatedUser", updatedUser);
+    createPostForUser(updatedUser)
+  }
+
   return (
     <div className="App">
       <AnimatedBackground />
-      <UserContainer handleEditClicked={handleEditClicked} postToEdit={postToEdit} users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser} />
+      <UserContainer handleEditClicked={handleEditClicked} postToEdit={postToEdit} users={users} loggedInUser={loggedInUser} 
+      onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser} 
+      addPost={addPost} updatePostForUser={updatePostForUser}/>
 
 
     </div>
