@@ -68,11 +68,10 @@ const FeedItem = ({ user, removeUser }) => {
 // the feed item needs to generate a post from the database
   return (
      <div>
-      <h1>Feed Item</h1>
-      <h3>{user.username}</h3>
-      {user.post && user.post.length > 0 ? (
-        user.post.map((post, index) => (
+      {user.post && user.post.length > 0 ? 
+      (user.post.map((post, index) => (
           <div key={index}>
+            <h3>{user.username}</h3>
             <p>{post.content}</p>
             {showComments && (
               <div>
@@ -87,9 +86,11 @@ const FeedItem = ({ user, removeUser }) => {
           </div>
         ))
       ) : (
-        <p>No posts available</p>
+        null
       )}
 
+{user.post && user.post.length > 0 ?
+    <div>
       <button onClick={handleToggleModal}>Comment</button>
       <button onClick={handleToggleComments}>
         {showComments ? 'Hide Comments' : 'Show Comments'}
@@ -107,7 +108,8 @@ const FeedItem = ({ user, removeUser }) => {
         {isShared ? 'Unshare' : 'Share'}
       </button>
 
-      {showModal && <CommentForm />}
+      {showModal && <CommentForm />} 
+    </div> : null}
     </div>
   );
 };
