@@ -72,6 +72,7 @@ const createRouter = function (collection) {
     });
 
     router.put('/:id', (req, res) =>{
+        console.log("put recieved");
         const id = req.params.id;
         const updatedData = req.body;
         collection
