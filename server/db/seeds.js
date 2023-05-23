@@ -18,6 +18,23 @@ db.users.insertMany([
             }
         ]
     },
+    { username: "user",
+    email: "memes@mememail.com",
+    password: "1",
+    post: [{
+        content: "A Post",
+        comments: []
+        },
+        {
+        content: "Another Post",
+        comments: []
+        },
+        {
+        content: "A Third Post",
+        comments: []
+            }
+    ]
+    },
     {
         username: "MemeLord1",
         email: "memelord@mememail.com",

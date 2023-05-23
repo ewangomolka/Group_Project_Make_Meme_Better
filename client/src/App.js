@@ -3,7 +3,7 @@ import './App.css';
 import MainContainer from './containers/MainContainer';
 import UserContainer from './containers/UserContainer';
 import { useState, useEffect } from 'react'
-import { getUsers, deleteUser, postNewUser, putPost, createPostForUser } from './services/UserServices.js';
+import { getUsers, deleteUser, postNewUser, putPost, createPostForUser , editPostForUser} from './services/UserServices.js';
 import AnimatedBackground from './components/AnimatedBackground.js';
 
 function App() {
@@ -77,13 +77,17 @@ function App() {
     console.log("updatedUser", updatedUser);
     createPostForUser(updatedUser)
   }
+  const postForUserUpdated = (updatedUser) => {
+    console.log("updatedUser", updatedUser);
+    editPostForUser(updatedUser)
+  }
 
   return (
     <div className="App">
       <AnimatedBackground />
       <UserContainer handleEditClicked={handleEditClicked} postToEdit={postToEdit} users={users} loggedInUser={loggedInUser} 
       onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser} 
-      addPost={addPost} updatePostForUser={updatePostForUser}/>
+      addPost={addPost} updatePostForUser={updatePostForUser} postForUserUpdated={postForUserUpdated}/>
 
 
     </div>

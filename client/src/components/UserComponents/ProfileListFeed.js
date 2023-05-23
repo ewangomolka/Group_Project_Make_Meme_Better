@@ -4,14 +4,14 @@ import ProfileFeedItem from './ProfileFeedItem';
 
 // import CommentForm from '../MainComponents/CommentForm';
 
-const ProfileFeedList = ({user, handleEditClicked, postToEdit}) => {
+const ProfileFeedList = ({user, handleEditClicked, postToEdit, postForUserUpdated}) => {
 
 
   return (
     
     <div>
       
-        <ProfileFeedItem key={user._id} user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit} />
+        <ProfileFeedItem key={user._id} user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit} postForUserUpdated={postForUserUpdated} />
       
     </div>
   );
