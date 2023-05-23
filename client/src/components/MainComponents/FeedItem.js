@@ -5,7 +5,7 @@ import { deleteUser } from '../../services/UserServices';
 import './FeedItem.css'
 
 // feed item will be card with a post taken from the database
-const FeedItem = ({ user, removeUser }) => {
+const FeedItem = ({ user, removeUser, updateCommentForUser }) => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLiked, setLiked] = useState(false);
@@ -108,7 +108,7 @@ const FeedItem = ({ user, removeUser }) => {
         {isShared ? 'Unshare' : 'Share'}
       </button>
 
-      {showModal && <CommentForm />} 
+      {showModal && <CommentForm user={user} updateCommentForUser={updateCommentForUser}/>} 
     </div> : null}
     </div>
   );
