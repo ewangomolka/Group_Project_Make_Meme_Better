@@ -1,8 +1,17 @@
+@import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
+
+
 .App {
   text-align: center;
 }
 
-.App-logo {
+button {
+  padding: 10px 20px;
+}
+
+
+
+/* .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
@@ -35,4 +44,4 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */

@@ -28,7 +28,7 @@ main {
     top: 0;
     z-index: 1;
     left: -400px;
-    background-color: #EF8354;
+    background-color: transparent;
     transition: left 0.3s ease;
     /* Add transition property */
 

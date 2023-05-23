@@ -2,8 +2,9 @@ import React, { useState } from "react"
 import ForgotPassword from "./ForgotPassword"
 import { loginUser } from "../../services/UserServices"
 import { postNewUser } from "../../services/UserServices"
+import './LoginForm.css'
 
-const Login = ({onSubmitLogin, addUser}) => {
+const Login = ({ onSubmitLogin, addUser }) => {
 
     const [usernameOrEmail, setUsernameOrEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -20,9 +21,9 @@ const Login = ({onSubmitLogin, addUser}) => {
     })
 
     const handleCreate = () => {
-      setButtonClicked(!buttonClicked)
+        setButtonClicked(!buttonClicked)
     }
-    
+
     const onChange = (e) => {
         const newFormData = Object.assign({}, formData);
         newFormData[e.target.name] = e.target.value;
@@ -46,8 +47,8 @@ const Login = ({onSubmitLogin, addUser}) => {
     }
 
     const handleUsernameChange = (event) => {
-      setUsername(event.target.value)
-  }
+        setUsername(event.target.value)
+    }
     const handlePasswordChange = (event) => {
         setPassword(event.target.value)
     }
@@ -55,64 +56,86 @@ const Login = ({onSubmitLogin, addUser}) => {
         setEmail(event.target.value)
     }
 
-    const handleSubmit = (event) => { 
+    const handleSubmit = (event) => {
         event.preventDefault();
         const user = {
-          username: username,
-          email: email,
-          password: password
+            username: username,
+            email: email,
+            password: password
         };
 
         // loginUser(user) // loginUser is a function that takes in a user object and returns a promise
         //   .then((data) => { // data is the user that is logged in
         //     console.log("db response", data);
-            if (
-              user && // if data exists
-              user.email === email && // if the email matches
-              user.password === password // if the password matches
-            ) {
-              console.log('User Logged In', user);
-              onSubmitLogin(user);
-            } else {
-              console.log('Authentication failed');
-            }
-          }
-          // .catch((error) => {
-          //   console.error('Error occurred:', error);
-          // });
-        
-        // setUsername('');
-        // setPassword('');
-      
+        if (
+            user && // if data exists
+            user.email === email && // if the email matches
+            user.password === password // if the password matches
+        ) {
+            console.log('User Logged In', user);
+            onSubmitLogin(user);
+        } else {
+            console.log('Authentication failed');
+        }
+    }
+    // .catch((error) => {
+    //   console.error('Error occurred:', error);
+    // });
+
+    // setUsername('');
+    // setPassword('');
+
 
 
 
     return (
+        <div className="login-container">
+    <div className="login-form-wrapper">
+        <h2>Sign in </h2>
+        <form className="login-form" onSubmit={handleSubmit}>
+            <div className="input-field">
+                <input type="text" id="user" placeholder="  Username/Email  " value={username} onChange={handleUsernameChange} required />
+            </div>
+            <div className="input-field">
+                <input type="password" id="password" placeholder="  Password  " value={password} onChange={handlePasswordChange} required />
+            </div>
+            <div>
+                <button onClick={() => setShow(true)} className="forgot-pw">Forget Password?</button>
+                {show && (
+                    <div className="modal-overlay">
+                        <div className="modal-content">
+                            <ForgotPassword onClose={() => setShow(false)} show={show} />
+                        </div>
+                    </div>
+                )}
+            </div>
+            <input className="login-submit-btn" type="submit" value="Sign In" />
+        </form>
         <div>
-            <h2>Sign in </h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" id="user" placeholder="  USERNAME OR EMAIL  " value={username} onChange={handleUsernameChange} required />
-                <input text="password" id="password" placeholder="  PASSWORD  " value={password} onChange={handlePasswordChange} required />
-                <input type="submit" value="Log in" />
-            </form>
-            <div>
-                <button onClick={() => setShow(true)}>Forget Password?</button>
-                <ForgotPassword onClose={() => setShow(false)} show={show} />
-            </div>
-            <div>
-                <button onClick={handleCreate}>create an account?</button>
-                {buttonClicked ? <div>
-                <h1>Create Form</h1>
-                <form onSubmit={onSubmit}>
-                    <input type="text" id="user" name='username' placeholder="  USERNAME  " value={formData.username} onChange={onChange} required />
-                    <input type="text" id="email" name='email' placeholder="  EMAIL  " value={formData.email} onChange={onChange} required />
-                    <input type="password" id="password" name='password' placeholder="  PASSWORD  " value={formData.password} onChange={onChange} required />
-                    <input type="submit" value="Create Account" />
-                </form>
-                <button onClick={handleCreate}>Cancel</button>
-                </div> : null}
-            </div>
+            <button onClick={handleCreate} className="create-acc-btn">Create an account</button>
+            {buttonClicked && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h1>Create Form</h1>
+                        <form onSubmit={onSubmit}>
+                            <div className="input-field">
+                                <input type="text" id="user" name='username' placeholder="  USERNAME  " value={formData.username} onChange={onChange} required />
+                            </div>
+                            <div className="input-field">
+                                <input type="text" id="email" name='email' placeholder="  EMAIL  " value={formData.email} onChange={onChange} required />
+                            </div>
+                            <input type="password" id="password" name='password' placeholder="  PASSWORD  " value={formData.password} onChange={onChange} required />
+                            <input className="acc-submit-btn" type="submit" value="Create Account" />
+                        </form>
+                        <button className="acc-cancel-btn" onClick={handleCreate}>Cancel</button>
+                    </div>
+                </div>
+            )}
         </div>
-    )
+    </div>
+</div>
+
+
+            )
 }
-export default Login;
+            export default Login;

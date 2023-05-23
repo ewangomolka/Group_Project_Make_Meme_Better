@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getUsers } from '../../services/UserServices';
 import FeedItem from './FeedItem';
+import './FeedList.css'
 
 const FeedList = ({users, removeUser}) => {
 

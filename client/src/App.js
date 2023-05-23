@@ -3,7 +3,8 @@ import './App.css';
 import MainContainer from './containers/MainContainer';
 import UserContainer from './containers/UserContainer';
 import {useState, useEffect} from 'react'
-import { getUsers, deleteUser, postNewUser} from './services/UserServices.js'
+import { getUsers, deleteUser, postNewUser} from './services/UserServices.js';
+import AnimatedBackground from './components/AnimatedBackground.js'
 
 function App() {
 
@@ -61,6 +62,7 @@ const removeUser = (id) => {
 
   return (
     <div className="App">
+      <AnimatedBackground/>
       <UserContainer users={users} loggedInUser={loggedInUser} onSubmitLogin={onSubmitLogin} onUserLogout={onUserLogout} addUser={addUser} removeUser={removeUser}/>
 
       
