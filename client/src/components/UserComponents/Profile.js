@@ -17,9 +17,9 @@ const Profile = ({user, removeUser, handleLogout}) => {
 
     return ( 
         <div>
-            <div>
+            {/* <div>
                 <NavBar/>
-            </div>
+            </div> */}
             <div>
                 <div>
                 </div>

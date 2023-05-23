@@ -184,6 +184,16 @@ nav {
     transition: all .7s .6s ease-in-out;
 } */
 
+a {
+    text-decoration: none;
+    color: #FFF;
+    -webkit-transition: all .7s ease-in-out;
+    -moz-transition: all .7s ease-in-out;
+    -ms-transition: all .7s ease-in-out;
+    -o-transition: all .7s ease-in-out;
+    transition: all .7s ease-in-out;
+}
+
 .sidebar-item.active {
     opacity: 1;
     -webkit-transform: translateY(0px);
@@ -251,6 +261,10 @@ li:hover {
     -ms-transition: all 1s ease;
     -o-transition: all 1s ease;
     transition: all 1s ease;
+}
+
+li .logout-btn {
+    color: red;
 }
 
 @media (min-width: 480px) {
