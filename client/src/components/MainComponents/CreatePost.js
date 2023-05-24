@@ -2,9 +2,14 @@ import React, { useState } from 'react';
 // import { createPostForUser } from '../../services/UserServices';
 import { createPostForUser } from '../../services/UserServices';
 import './CreatePost.css'
+import {Link} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+
 
 
 const CreatePost = ({ user, addPost, updatePostForUser }) => {
+
+    const navigate = useNavigate();
 
     // need a form that allows users to type in a post and submit it
 
@@ -33,6 +38,7 @@ const CreatePost = ({ user, addPost, updatePostForUser }) => {
             password: user.password,
             post: newPosts
         })
+        navigate("/");
     };
 
     return (
