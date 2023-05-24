@@ -94,7 +94,7 @@ function App() {
     const userIndex = copiedUsers.indexOf(foundUser)
     copiedUsers.splice(userIndex, 1, updatedUser)
     // splice ( index, number, what to replace it with)
-    setUsers(copiedUsers)
+    setUsers(copiedUsers.reverse())
   }
 
   const postForUserUpdated = (updatedUser) => {
@@ -105,7 +105,7 @@ function App() {
     const userIndex = copiedUsers.indexOf(foundUser)
     copiedUsers.splice(userIndex, 1, updatedUser)
     // splice ( index, number, what to replace it with)
-    setUsers(copiedUsers)
+    setUsers(copiedUsers.reverse())
   }
 
   // {
@@ -128,7 +128,7 @@ function App() {
     const userIndex = copiedUsers.indexOf(foundUser)
     copiedUsers.splice(userIndex, 1, updatedUser)
     // splice ( index, number, what to replace it with)
-    setUsers(copiedUsers)
+    setUsers(copiedUsers.reverse())
 
   }
 
