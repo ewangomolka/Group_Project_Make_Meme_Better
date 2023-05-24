@@ -5,7 +5,7 @@ import { deleteUser } from '../../services/UserServices';
 import ProfileFeedList from './ProfileListFeed';
 import {Link} from 'react-router-dom';
 
-const Profile = ({user, removeUser, handleLogout, handleEditClicked, postToEdit}) => {
+const Profile = ({user, removeUser, handleLogout, handleEditClicked, postToEdit, postForUserUpdated}) => {
 
     const handleDelete = () => {
         handleLogout();
@@ -26,7 +26,7 @@ const Profile = ({user, removeUser, handleLogout, handleEditClicked, postToEdit}
                 <p>{user.username}</p>
                 <div>
                 <p>yo mama</p>
-                <ProfileFeedList user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit}/>
+                <ProfileFeedList user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit} postForUserUpdated={postForUserUpdated}/>
                 <Link to="/"><button onClick={handleDelete}>bye Felicia</button></Link>
                 </div>
             </div>

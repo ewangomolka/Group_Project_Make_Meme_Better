@@ -4,7 +4,7 @@ import { getUsers, deleteUser, postNewUser} from '../services/UserServices.js'
 import MainContainer from './MainContainer';
 
 const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUser, addPost,
-     removeUser, onUserDelete, handleEditClicked, postToEdit, updatePostForUser, updateCommentForUser}) => {
+     removeUser, onUserDelete, handleEditClicked, postToEdit, updatePostForUser, updateCommentForUser, postForUserUpdated}) => {
 
 
 
@@ -12,7 +12,7 @@ const UserContainer = ({users, loggedInUser, onSubmitLogin, onUserLogout, addUse
         return <MainContainer handleEditClicked={handleEditClicked} addPost={addPost}
          postToEdit={postToEdit} users = {users} user={loggedInUser}
           onUserLogout={onUserLogout} removeUser={removeUser}
-          updatePostForUser={updatePostForUser} updateCommentForUser={updateCommentForUser}/>; // if logged in, show main container with logged in user and logout function is passed through
+          updatePostForUser={updatePostForUser} updateCommentForUser={updateCommentForUser} postForUserUpdated={postForUserUpdated}/>; // if logged in, show main container with logged in user and logout function is passed through
     }
     return (
         <div>

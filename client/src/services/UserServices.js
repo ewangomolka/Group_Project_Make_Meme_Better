@@ -132,3 +132,19 @@ export const createCommentForPost = (payload) => {
     })
         .then(res => res.json())
 }
+
+export const editPostForUser = (payload) => {
+    console.log("editPostForUser called", payload);
+    const newPayload = {
+        username: payload.username,
+        email: payload.email,
+        password: payload.password,
+        post: payload.post
+    }
+    return fetch(baseURL + payload._id, {
+        method: 'PUT',
+        body: JSON.stringify(newPayload),
+        headers: { 'Content-Type': 'application/json'}
+    })
+        .then(res => res.json())
+}

@@ -5,13 +5,14 @@ import { deleteUser } from '../../services/UserServices';
 import EditPost from '../MainComponents/EditPost';
 
 // feed item will be card with a post taken from the database
-const ProfileFeedItem = ({ user, handleEditClicked, postToEdit }) => {
+const ProfileFeedItem = ({ user, handleEditClicked, postToEdit, postForUserUpdated}) => {
   const [posts, setPosts] = useState([]);
   const [comments, setComments] = useState([]);
   const [isLiked, setLiked] = useState(false);
   const [isShared, setShared] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
+  const [selectedPost, setSelectedPost] = useState({});
 
   useEffect(() => {
     if (user.id) {
@@ -56,6 +57,7 @@ const ProfileFeedItem = ({ user, handleEditClicked, postToEdit }) => {
   };
 
   const handleToggleEdit = () => {
+    setSelectedPost(user.post[0]);
     setShowEdit(!showEdit);
   };
 
@@ -67,7 +69,11 @@ const ProfileFeedItem = ({ user, handleEditClicked, postToEdit }) => {
       {user.post && user.post.length > 0 ? (
         user.post.map((post, index) => (
           <div key={index}>
-            <p>{post.content}</p>
+            <p>{post.content}{index}</p>
+            <EditPost
+            user={user}
+            index={index}
+            postForUserUpdated={postForUserUpdated}/>
             {post.comments.map((comment, commentIndex) => (
               <div key={commentIndex}>
                 <p>User: {comment.user}</p>
@@ -94,7 +100,7 @@ const ProfileFeedItem = ({ user, handleEditClicked, postToEdit }) => {
       >
         {isShared ? 'Unshare' : 'Share'}
       </button>
-      {showEdit && <EditPost user={user} handleEditClicked={handleEditClicked} postToEdit={postToEdit} />}
+      {showEdit && <EditPost user={user} handleEditClicked={handleEditClicked} selectedPost={selectedPost} postForUserUpdated={postForUserUpdated} />}
       {showModal && <CommentForm />}
     </>
   );
