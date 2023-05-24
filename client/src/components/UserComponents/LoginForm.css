@@ -140,3 +140,9 @@ input {
 .acc-cancel-btn:hover {
     background-color: #D13800;
 }
+
+.header-logo {
+    width: 30%;
+    height: auto;
+    margin-top: 15px;
+}
