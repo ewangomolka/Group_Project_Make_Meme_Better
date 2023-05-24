@@ -3,7 +3,7 @@ import { getUsers } from '../../services/UserServices';
 import FeedItem from './FeedItem';
 import styled from 'styled-components';
 
-const FeedList = ({ users, removeUser }) => {
+const FeedList = ({ users, removeUser, updateCommentForUser }) => {
 
   const ScrollBox = styled.div`
     & {
@@ -28,7 +28,7 @@ const FeedList = ({ users, removeUser }) => {
     <Container>
       <ScrollBox>
         {users.map((user) => (
-          <FeedItem key={user._id} user={user} removeUser={removeUser} />
+          <FeedItem key={user._id} user={user} removeUser={removeUser} updateCommentForUser={updateCommentForUser} />
         ))}
       </ScrollBox>
     </Container>

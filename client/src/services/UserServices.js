@@ -117,10 +117,17 @@ export const getComments = () => {
         .then(res => res.json());
 }
 
-export const createCommentForPost = (id, comment) => {
-    return fetch(baseURL + 'post/' + id + '/comment', {
-        method: 'POST',
-        body: JSON.stringify(comment),
+export const createCommentForPost = (payload) => {
+    console.log("comment with payload", payload)
+    const newPayload = {
+        username: payload.username,
+        email: payload.email,
+        password: payload.password,
+        post: payload.post
+    }
+    return fetch(baseURL + payload._id, {
+        method: 'PUT',
+        body: JSON.stringify(newPayload),
         headers: { 'Content-Type': 'application/json' }
     })
         .then(res => res.json())
