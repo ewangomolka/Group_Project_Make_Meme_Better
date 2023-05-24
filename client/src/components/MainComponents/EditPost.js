@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { createPostForUser } from '../../services/MainServices';
 import { editPostForUser } from '../../services/UserServices';
+import { useNavigate } from "react-router-dom";
+
 const EditPost = ({ user, selectedPost, postForUserUpdated, index}) => {
     // need a form that allows users to type in a post and submit it
     // need a state to hold the form data
+    const navigate = useNavigate();
     const [newPost, setNewPost] = useState({
         content: "",
         comments: []
@@ -55,6 +58,7 @@ const EditPost = ({ user, selectedPost, postForUserUpdated, index}) => {
             password: user.password,
             post: newEditedPosts
         })
+        navigate("/profile")
     };
     return (
         <>
