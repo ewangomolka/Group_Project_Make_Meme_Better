@@ -51,7 +51,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
 
     return (
         <div>
-
+        <div>
             <Router>
                 <NavBar handleLogout={handleLogout}/>
             <Routes> 
