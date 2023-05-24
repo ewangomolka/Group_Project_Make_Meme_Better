@@ -1,6 +1,34 @@
-
-
 img {
     width: 30vw;
 }
 
+.username-content-wrapper {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+}
+
+.feed-item-wrapper {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+}
+
+#feed-btn {
+    margin: 5px;
+    background-color: #fff;
+    border: 1px rgb(193, 192, 192);
+    border-radius: 5px;
+    
+}
+
+
+.share-button {
+    background: transparent url("https://github.com/ewangomolka/Group_Project_Make_Meme_Better/blob/d9a910306a354e1d19d6d72eea2906bcdd0c82e3/client/public/A-17961-1677769785-1942.jpg") 50% no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    content: "";
+    display: inline-block;
+}

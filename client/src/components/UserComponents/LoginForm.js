@@ -91,7 +91,7 @@ const Login = ({ onSubmitLogin, addUser }) => {
     return (
         <div className="login-container">
     <div className="login-form-wrapper">
-        <h2>Sign in </h2>
+        <h1>Sign in </h1>
         <form className="login-form" onSubmit={handleSubmit}>
             <div className="input-field">
                 <input type="text" id="user" placeholder="  Username/Email  " value={username} onChange={handleUsernameChange} required />

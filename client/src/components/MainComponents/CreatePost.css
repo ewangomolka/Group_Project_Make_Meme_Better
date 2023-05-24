@@ -1,0 +1,47 @@
+.create-post-form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.create-post-form {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+    
+    width: 500px;
+}
+
+#content {
+    margin-bottom: 20px;
+}
+
+.header-profile-pic {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+.form-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.post-submit-btn {
+    width: 230px;
+    background-color: #00C1C1;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.post-submit-btn:hover {
+    background-color: #00E1E1;
+}

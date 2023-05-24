@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 // import { createPostForUser } from '../../services/UserServices';
 import { createPostForUser } from '../../services/UserServices';
+import './CreatePost.css'
 
 
-const CreatePost = ({user, addPost, updatePostForUser}) => {
+const CreatePost = ({ user, addPost, updatePostForUser }) => {
 
     // need a form that allows users to type in a post and submit it
 
@@ -23,7 +24,7 @@ const CreatePost = ({user, addPost, updatePostForUser}) => {
     // // need a function to handle form submission and save the new post to the database
     const handleSubmit = (event) => {
         event.preventDefault();
-        const newPosts = [... user.post]
+        const newPosts = [...user.post]
         newPosts.push(newPost)
         updatePostForUser({
             _id: user._id,
@@ -33,18 +34,26 @@ const CreatePost = ({user, addPost, updatePostForUser}) => {
             post: newPosts
         })
     };
-    
+
     return (
         <>
-            <h1>Create Post Form</h1>
-            <form onSubmit={handleSubmit} id='createPostForm'>
-                <label htmlFor="content">Content:</label>
-                <input type="text" name="content" id="content" value={newPost.content} onChange={handleChange} />
-                <button type='submit' value='Save'>Submit</button>
-            </form>
+            <div className='create-post-form-wrapper'>
+                <div className='create-post-form'>
+                    <h1>Create Post Form</h1>
+                    <div className='form-header'>
+                        <img className="header-profile-pic" src="../../queen-elizabeth-242909c079b34ea38ae6b328d1da2fc0.jpg" alt="Queenie" />
+                        <p>@{user.username}</p>
+                    </div>
+                    <form onSubmit={handleSubmit} id='createPostForm'>
+                        <label htmlFor="content"></label>
+                        <input type="textarea" name="content" id="content" placeholder="What's occuring?" value={newPost.content} onChange={handleChange} />
+                        <button className='post-submit-btn' type='submit' value='Save'>Post</button>
+                    </form>
+                </div>
+            </div>
         </>
 
-);
+    );
 
 
 }

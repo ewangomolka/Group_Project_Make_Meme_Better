@@ -23,15 +23,14 @@ main {
 
 .sidebar {
     height: 100%;
-    width: 400px;
+    width: 300px;
     position: fixed;
     top: 0;
     z-index: 1;
-    left: -400px;
-    background-color: transparent;
+    left: -300px;
+    background-color: rgba(255, 255, 255, 0.5);
     transition: left 0.3s ease;
     /* Add transition property */
-
 }
 
 .sidebar.active {
@@ -43,7 +42,7 @@ main {
     display: block;
     height: 5px;
     width: 50px;
-    background-color: darkgray;
+    background-color: purple;
     margin: 7px auto;
     border-radius: 5px;
 
@@ -152,6 +151,10 @@ nav {
 }
 
 
+.logout-btn {
+    bottom: 15px;
+}
+
 /* .sidebar-item:first-child {
     -webkit-transition: all .7s .2s ease-in-out;
     -moz-transition: all .7s .2s ease-in-out;
@@ -186,7 +189,8 @@ nav {
 
 a {
     text-decoration: none;
-    color: #FFF;
+    color: #6a6868;
+    /* text-shadow: 1px 1px 4px rgba(0,0,0,0.3);; */
     -webkit-transition: all .7s ease-in-out;
     -moz-transition: all .7s ease-in-out;
     -ms-transition: all .7s ease-in-out;
@@ -264,8 +268,27 @@ li:hover {
 }
 
 li .logout-btn {
-    color: red;
+    color: #FF4500;
+    text-shadow: none;
+    bottom: 15px;   
+    margin-top: auto;
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; */
 }
+
+.logout-btn .logout-icon{
+    /* position: relative; */
+    float: right;
+    font-size: 25px;
+}
+
+.logout-icon {
+    padding: 0;
+    margin: 0;
+}
+
 
 @media (min-width: 480px) {
     .nav-list {
@@ -285,4 +308,12 @@ li .logout-btn {
     .visible-xs {
         display: none;
     }
+}
+
+@media (max-width: 1097px) {
+  .sidebar.active {
+    width: 100%;
+    left: 0;
+    background-color: skyblue;
+  }
 }

@@ -1,3 +1,9 @@
+@import url(https://fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic);
+
+h1 {
+    font-family: 'Arimo', sans-serif;
+}
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -11,8 +17,8 @@
     border:  solid white;
     border-radius: 20px;
     padding: 30px;
-    width: 300px;
-    height: 350px;
+    width: 400px;
+    height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -46,7 +52,16 @@ input {
     color: white;
     font-weight: bold;
     border: none;
+    cursor: pointer;
 
+}
+
+.acc-submit-btn:hover {
+    background-color: #00E1E1;
+}
+
+.login-submit-btn:hover {
+    background-color: #00E1E1;
 }
 
 .forgot-pw, .create-acc-btn {
@@ -80,9 +95,13 @@ input {
     border-radius: 10px;
     padding: 35px;
     max-width: 400px;
-    width: 300px;
-    height: 350px;
+    width: 400px;
+    height: 450px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-close {
@@ -99,14 +118,25 @@ input {
 }
 
 .silly-goose-btn {
-
+    border-radius: 20px;
+    width: 100%;
 }
 
-.acc-cancel-btn, .acc-submit-btn {
+.silly-goose-btn:hover {
+    background-color: #00E1E1; 
+}
+
+.acc-submit-btn {
     margin-top: 10px;
     width: 100%;
 }
 
 .acc-cancel-btn {
     background-color: #FF4500;
+    margin-top: 10px;
+    width: 70%;
+}
+
+.acc-cancel-btn:hover {
+    background-color: #D13800;
 }

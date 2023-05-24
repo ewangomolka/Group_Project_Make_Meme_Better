@@ -7,6 +7,7 @@ import Profile from '../components/UserComponents/Profile';
 import CreatePost from '../components/MainComponents/CreatePost';
 import Support from '../components/MainComponents/Support';
 import styled from 'styled-components';
+
 import '../App.css';
 
 
@@ -29,6 +30,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     `
 
 
+
     const [feedItems, setFeedItems] = useState([]);
 
 
@@ -39,7 +41,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     }, [removeUser, updatePostForUser, updateCommentForUser])
 
     const handleLogout = () => {
-      onUserLogout();
+        onUserLogout();
     }
 
     // const removeUser = (id) => {
@@ -47,10 +49,9 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     //     // setUsers(usersToKeep)
     // }
 
-    return ( 
+    return (
         <div>
-            <h1>Your Feed!</h1>
-        <div>
+
             <Router>
                 <NavBar handleLogout={handleLogout}/>
             <Routes> 
@@ -62,9 +63,10 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
             </Router>
             {/* <button onClick={handleLogout}>temp logout button</button> */}
         </div>
+
             <Footer>H.E.C. ltd</Footer>
         </div>
-     );
+    );
 }
- 
+
 export default MainContainer;

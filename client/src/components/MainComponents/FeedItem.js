@@ -67,17 +67,18 @@ const FeedItem = ({ user, removeUser, updateCommentForUser }) => {
 
 // the feed item needs to generate a post from the database
   return (
-     <div>
+     <div className='feed-item-wrapper'>
       {user.post && user.post.length > 0 ? 
       (user.post.map((post, index) => (
-          <div key={index}>
-            <h3>{user.username}</h3>
-            <p>{post.content}</p>
+          <div className='username-content-wrapper' key={index}>
+            <p>@{user.username}:</p>
+            <h3>{post.content}</h3>
             {showComments && (
               <div>
                 {post.comments.map((comment, commentIndex) => (
                   <div key={commentIndex}>
-                    <p>User {comment.user} posted:</p>
+                    <hr />
+                    <p>User {comment.user} commented:</p>
                     <img src={comment.meme} alt="Comment Meme" />
                   </div>
                 ))}
@@ -91,17 +92,19 @@ const FeedItem = ({ user, removeUser, updateCommentForUser }) => {
 
 {user.post && user.post.length > 0 ?
     <div>
-      <button onClick={handleToggleModal}>Comment</button>
-      <button onClick={handleToggleComments}>
+      <button id='feed-btn' onClick={handleToggleModal}>Comment</button>
+      <button id='feed-btn' onClick={handleToggleComments}>
         {showComments ? 'Hide Comments' : 'Show Comments'}
       </button>
       <button
+        id='feed-btn'
         onClick={handleLike}
         className={isLiked ? 'like-button liked' : 'like-button'}
       >
         {isLiked ? 'Unlike' : 'Like'}
       </button>
       <button
+        id='feed-btn'
         onClick={handleShare}
         className={isShared ? 'share-button shared' : 'share-button'}
       >
