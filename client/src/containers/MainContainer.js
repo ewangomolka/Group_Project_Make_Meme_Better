@@ -7,6 +7,7 @@ import Profile from '../components/UserComponents/Profile';
 import CreatePost from '../components/MainComponents/CreatePost';
 import Support from '../components/MainComponents/Support';
 import styled from 'styled-components';
+
 import '../App.css';
 
 
@@ -29,6 +30,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     `
 
 
+
     const [feedItems, setFeedItems] = useState([]);
 
 
@@ -39,7 +41,7 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     }, [removeUser])
 
     const handleLogout = () => {
-      onUserLogout();
+        onUserLogout();
     }
 
     // const removeUser = (id) => {
@@ -47,24 +49,24 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
     //     // setUsers(usersToKeep)
     // }
 
-    return ( 
+    return (
         <div>
-            <h1>Your Feed!</h1>
-        <div>
-            <Router>
-                <NavBar handleLogout={handleLogout}/>
-            <Routes> 
-            <Route path="/" element = {<FeedList users={users} removeUser={removeUser} feedItems={feedItems}/>}/> 
-            <Route path="/profile" element = {<Profile key={user._id} user={user} removeUser={removeUser} handleLogout={handleLogout} handleEditClicked={handleEditClicked} postToEdit={postToEdit}/>}/>
-            <Route path="/upload" element = {<CreatePost users={users} addPost={addPost} updatePostForUser={updatePostForUser} user={user}/>}/>
-            <Route path="/support" element = {<Support/>}/> 
-            </Routes>
-            </Router>
-            {/* <button onClick={handleLogout}>temp logout button</button> */}
-        </div>
+
+            <div>
+                <Router>
+                    <NavBar handleLogout={handleLogout} />
+                    <Routes>
+                        <Route path="/" element={<FeedList users={users} removeUser={removeUser} feedItems={feedItems} />} />
+                        <Route path="/profile" element={<Profile key={user._id} user={user} removeUser={removeUser} handleLogout={handleLogout} handleEditClicked={handleEditClicked} postToEdit={postToEdit} />} />
+                        <Route path="/upload" element={<CreatePost users={users} addPost={addPost} updatePostForUser={updatePostForUser} user={user} />} />
+                        <Route path="/support" element={<Support />} />
+                    </Routes>
+                </Router>
+                {/* <button onClick={handleLogout}>temp logout button</button> */}
+            </div>
             <Footer>H.E.C. ltd</Footer>
         </div>
-     );
+    );
 }
- 
+
 export default MainContainer;
