@@ -3,6 +3,7 @@ import CommentForm from '../MainComponents/CommentForm';
 import { getPosts, getComments } from '../../services/UserServices';
 import { deleteUser } from '../../services/UserServices';
 import EditPost from '../MainComponents/EditPost';
+import './ProfileFeedItem.css'
 
 // feed item will be card with a post taken from the database
 const ProfileFeedItem = ({ user, handleEditClicked, postToEdit, postForUserUpdated}) => {
@@ -63,20 +64,20 @@ const ProfileFeedItem = ({ user, handleEditClicked, postToEdit, postForUserUpdat
 
   // the feed item needs to generate a post from the database
   return (
-    <>
-      <h1>Feed Item</h1>
-      <h3>{user.username}</h3>
+    <div className='profile-feed-wrapper'>
+      {/* <h3>{user.username}</h3> */}
       {user.post && user.post.length > 0 ? (
         user.post.map((post, index) => (
-          <div key={index}>
-            <p>{post.content}{index}</p>
+          <div className='' key={index}>
+            <h2>{post.content}</h2>
             <EditPost
             user={user}
             index={index}
             postForUserUpdated={postForUserUpdated}/>
             {post.comments.map((comment, commentIndex) => (
               <div key={commentIndex}>
-                <p>User: {comment.user}</p>
+                <hr />
+                <p>@{comment.user} commented:</p>
                 <img src={comment.meme} alt="Comment Meme" />
               </div>
             ))}
@@ -86,23 +87,9 @@ const ProfileFeedItem = ({ user, handleEditClicked, postToEdit, postForUserUpdat
         <p>No posts available</p>
       )}
 
-      <button onClick={handleToggleModal}>Comment</button>
-      <button onClick={handleToggleEdit}>Edit</button>
-      <button
-        onClick={handleLike}
-        className={isLiked ? 'like-button liked' : 'like-button'}
-      >
-        {isLiked ? 'Unlike' : 'Like'}
-      </button>
-      <button
-        onClick={handleShare}
-        className={isShared ? 'share-button shared' : 'share-button'}
-      >
-        {isShared ? 'Unshare' : 'Share'}
-      </button>
       {showEdit && <EditPost user={user} handleEditClicked={handleEditClicked} selectedPost={selectedPost} postForUserUpdated={postForUserUpdated} />}
       {showModal && <CommentForm />}
-    </>
+    </div>
   );
 };
 
