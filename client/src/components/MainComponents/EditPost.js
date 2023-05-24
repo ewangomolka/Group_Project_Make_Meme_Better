@@ -59,7 +59,7 @@ const EditPost = ({ user, selectedPost, postForUserUpdated, index}) => {
     return (
         <>
             <form onSubmit={handleSubmit} id='editPostForm'>
-            <label htmlFor="content">Content:</label>
+            <label htmlFor="content">Edit post:</label>
                 <input type="text" name="content" id="content" value={newPost.content} onChange={handleChange} />
                 <button type='submit'>Submit</button>
             </form >

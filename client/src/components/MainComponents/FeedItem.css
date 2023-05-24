@@ -1,5 +1,5 @@
 img {
-    width: 30vw;
+    width: 15vw;
 }
 
 .username-content-wrapper {
@@ -25,10 +25,10 @@ img {
 }
 
 
-.share-button {
+/* .share-button {
     background: transparent url("https://github.com/ewangomolka/Group_Project_Make_Meme_Better/blob/d9a910306a354e1d19d6d72eea2906bcdd0c82e3/client/public/A-17961-1677769785-1942.jpg") 50% no-repeat;
     background-size: contain;
     border-radius: 50%;
     content: "";
     display: inline-block;
-}
+} */
