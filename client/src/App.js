@@ -15,6 +15,7 @@ function App() {
 
   useEffect(() => {
     getUsers()
+    
       .then(data => { setUsers(data) })
 
     // if(localStorage.getItem('loggedInUser') != null){
@@ -95,7 +96,13 @@ function App() {
 
   const postForUserUpdated = (updatedUser) => {
     editPostForUser(updatedUser)
-
+    const copiedUsers = [...users]
+    // loop through users and find user where user id matches find
+    const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+    const userIndex = copiedUsers.indexOf(foundUser)
+    copiedUsers.splice(userIndex, 1, updatedUser)
+    // splice ( index, number, what to replace it with)
+    setUsers(copiedUsers)
   }
 
   // {
