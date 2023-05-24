@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getMemes, postMeme } from '../../services/MainServices';
+// import { Link } from 'react-router-dom';
+
 
 const CommentForm = ({user, updateCommentForUser}) => {
 
@@ -53,7 +55,6 @@ const CommentForm = ({user, updateCommentForUser}) => {
     // need a function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log('form submitted');
         const newUserComment = [... user.post[0].comments]
         newUserComment.push(newComment)
         console.log(newUserComment);
@@ -68,7 +69,7 @@ const CommentForm = ({user, updateCommentForUser}) => {
           }]
           
         });
-      
+        
 
 
     }

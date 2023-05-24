@@ -73,17 +73,53 @@ function App() {
     // setUsers(newUsers)
   }
 
+//   {
+//     _id: user._id,
+//     username: user.username,
+//     email: user.email,
+//     password: user.password,
+//     post: newPosts
+// }
+
   const updatePostForUser = (updatedUser) => {
-    console.log("updatedUser", updatedUser);
+    console.log(updatedUser)
     createPostForUser(updatedUser)
+    const copiedUsers = [...users]
+    // loop through users and find user where user id matches find
+    const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+    const userIndex = copiedUsers.indexOf(foundUser)
+    copiedUsers.splice(userIndex, 1, updatedUser)
+    // splice ( index, number, what to replace it with)
+    setUsers(copiedUsers)
   }
 
   const postForUserUpdated = (updatedUser) => {
     editPostForUser(updatedUser)
+
   }
+
+  // {
+  //         _id: user._id,
+  //         username: user.username,
+  //         email: user.email,
+  //         password: user.password,
+  //         post: [{
+  //           content: user.post[0].content,
+  //           comments: newUserComment
+  //         }
 
   const updateCommentForUser = (updatedUser) => {
     createCommentForPost(updatedUser)
+
+    // make a copy of the current users list
+    const copiedUsers = [...users]
+    // loop through users and find user where user id matches find
+    const foundUser = copiedUsers.find((user) => updatedUser._id == user._id)
+    const userIndex = copiedUsers.indexOf(foundUser)
+    copiedUsers.splice(userIndex, 1, updatedUser)
+    // splice ( index, number, what to replace it with)
+    setUsers(copiedUsers)
+
   }
 
   return (
