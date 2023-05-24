@@ -38,6 +38,7 @@ function NavBar({ handleLogout }) {
   return (
     <>
       <Header>
+        <img className="header-logo-main" src="../../Meme logo.png" alt="logo" />
         <Link to="/profile">
           <Img className="header-profile-pic" src="../../queen-elizabeth-242909c079b34ea38ae6b328d1da2fc0.jpg" alt="Queenie" />
         </Link>
