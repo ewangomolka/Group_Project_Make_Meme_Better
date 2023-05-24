@@ -23,11 +23,12 @@ const FeedList = ({ users, removeUser, updateCommentForUser }) => {
     justify-content: center;
     padding-top: 75px;
   `
+  const userFeedItems = users.reverse()
 
   return (
     <Container>
       <ScrollBox>
-        {users.map((user) => (
+        {userFeedItems.map((user) => (
           <FeedItem key={user._id} user={user} removeUser={removeUser} updateCommentForUser={updateCommentForUser} />
         ))}
       </ScrollBox>

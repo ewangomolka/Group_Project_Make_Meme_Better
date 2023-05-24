@@ -16,7 +16,10 @@ function App() {
   useEffect(() => {
     getUsers()
     
-      .then(data => { setUsers(data) })
+      .then(data => {
+        
+        setUsers(data.reverse()) }
+         )
 
     // if(localStorage.getItem('loggedInUser') != null){
     //     let storedUser = localStorage.getItem('loggedInUser')

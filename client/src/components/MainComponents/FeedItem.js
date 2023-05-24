@@ -65,11 +65,13 @@ const FeedItem = ({ user, removeUser, updateCommentForUser }) => {
     setShowComments(!showComments);
   };
 
+  const reversedFeedItems = user.post.reverse();
+
 // the feed item needs to generate a post from the database
   return (
      <div className='feed-item-wrapper'>
       {user.post && user.post.length > 0 ? 
-      (user.post.map((post, index) => (
+      (reversedFeedItems.map((post, index) => (
           <div className='username-content-wrapper' key={index}>
             <p>@{user.username}:</p>
             <h3>{post.content}</h3>
