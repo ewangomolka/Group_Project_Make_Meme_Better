@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getMemes, postMeme } from '../../services/MainServices';
 
-const CommentForm = () => {
+const CommentForm = ({user, updateCommentForUser}) => {
 
     // need a state variable to hold all categories
     // need a state variable to hold the selected category
@@ -10,6 +10,10 @@ const CommentForm = () => {
     const [selectedCategory, setSelectedCategory] = useState('');
     const [memes, setMemes] = useState([]);
     const [randomMeme, setRandomMeme] = useState('');
+    const [newComment, setNewComment] = useState({
+      user: user.username,
+      meme: ""
+    })
 
 
     // need a function to fetch all categories
@@ -38,27 +42,34 @@ const CommentForm = () => {
           setRandomMeme(filteredMemes[randomIndex]);
         }
       };
+
+    const handleChange = (event) => {
+      const newInputComment = Object.assign({}, newComment);
+      newInputComment[event.target.name] = event.target.value;
+      setNewComment(newInputComment)
+    }
       
 
     // need a function to handle form submission
     const handleSubmit = (event) => {
         event.preventDefault();
         console.log('form submitted');
-        const payload = {
-            category: selectedCategory,
-            meme: randomMeme,
-        }
+        const newUserComment = [... user.post[0].comments]
+        newUserComment.push(newComment)
+        console.log(newUserComment);
+        updateCommentForUser({
+          _id: user._id,
+          username: user.username,
+          email: user.email,
+          password: user.password,
+          post: [{
+            content: user.post[0].content,
+            comments: newUserComment
+          }]
+          
+        });
+      
 
-        postMeme(payload)
-            .then((response) => {
-                console.log(response);
-                setSelectedCategory('');
-                setRandomMeme('');
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            }
-            );
 
     }
 
@@ -85,7 +96,7 @@ const CommentForm = () => {
             </>
           )}
         </div>
-        <button type='submit'>Submit</button>
+        <button onClick={handleChange} name ="meme" type='submit' value={randomMeme.url}>Submit</button>
       </form>
     </>
     );
