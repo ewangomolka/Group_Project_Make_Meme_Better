@@ -20,13 +20,6 @@ function App() {
         
         setUsers(data.reverse()) }
          )
-
-    // if(localStorage.getItem('loggedInUser') != null){
-    //     let storedUser = localStorage.getItem('loggedInUser')
-    //     console.log(JSON.parse(storedUser))
-    //     // setLoggedInUser(JSON.parse(storedUser))
-    // } // gets the logged in user from local storage if it exists 
-
   }, [])
 
   const onSubmitLogin = (searchUser) => { // searchUser is the user that is trying to log in
@@ -71,19 +64,7 @@ function App() {
   const removeUser = (id) => {
     const usersToKeep = users.filter(user => user._id !== id)
     setUsers(usersToKeep);
-    // const newUsers = [...users];
-    // const index = newUsers.indexOf(user);
-    // newUsers.splice(index, 1)
-    // setUsers(newUsers)
   }
-
-//   {
-//     _id: user._id,
-//     username: user.username,
-//     email: user.email,
-//     password: user.password,
-//     post: newPosts
-// }
 
   const updatePostForUser = (updatedUser) => {
     console.log(updatedUser)
@@ -107,16 +88,6 @@ function App() {
     // splice ( index, number, what to replace it with)
     setUsers(copiedUsers.reverse())
   }
-
-  // {
-  //         _id: user._id,
-  //         username: user.username,
-  //         email: user.email,
-  //         password: user.password,
-  //         post: [{
-  //           content: user.post[0].content,
-  //           comments: newUserComment
-  //         }
 
   const updateCommentForUser = (updatedUser) => {
     createCommentForPost(updatedUser)

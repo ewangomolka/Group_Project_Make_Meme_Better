@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import { createPostForUser } from '../../services/UserServices';
 import { createPostForUser } from '../../services/UserServices';
 import './CreatePost.css'
 import {Link} from 'react-router-dom';
@@ -25,7 +24,6 @@ const CreatePost = ({ user, addPost, updatePostForUser }) => {
         newInputPost[event.target.name] = event.target.value;
         setNewPost(newInputPost)
     }
-    // // UNSURE IF THIS IS RIGHT
     // // need a function to handle form submission and save the new post to the database
     const handleSubmit = (event) => {
         event.preventDefault();

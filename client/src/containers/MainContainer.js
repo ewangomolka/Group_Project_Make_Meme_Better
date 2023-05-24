@@ -44,11 +44,6 @@ const MainContainer = ({ users, user, onUserLogout, removeUser, handleEditClicke
         onUserLogout();
     }
 
-    // const removeUser = (id) => {
-    //     const usersToKeep = users.filter(user => user._id!==id)
-    //     // setUsers(usersToKeep)
-    // }
-
     return (
         <div>
         <div>

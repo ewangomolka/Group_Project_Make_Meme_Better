@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getMemes, postMeme } from '../../services/MainServices';
-// import { Link } from 'react-router-dom';
 
 
 const CommentForm = ({user, updateCommentForUser}) => {
